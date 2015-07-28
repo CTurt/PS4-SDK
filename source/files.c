@@ -3,5 +3,5 @@
 #include "files.h"
 
 int getSandboxDirectory(char *destination, int *length) {
-	syscall(602, 0, destination, length);
+	return syscall(602, 0, destination, length);
 }
