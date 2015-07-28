@@ -4,3 +4,4 @@
 
 #include "modules.h"
 #include "files.h"
+#include "semaphores.h"
