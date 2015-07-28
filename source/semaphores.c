@@ -17,3 +17,7 @@ int waitSemaphore(int semaphore, int requiredCount, int *microsecondTimeout) {
 int pollSemaphore(int semaphore, int requiredCount) {
 	return syscall(554, semaphore, requiredCount);
 }
+
+int cancelSemaphore(int semaphore, int count, int *threadsReleased) {
+	return syscall(556, semaphore, count, threadsReleased);
+}
