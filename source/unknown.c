@@ -17,3 +17,11 @@ int unknownResource2Create(const char *name) {
 int unknownResource2Destroy(int unknownResource) {
 	syscall(558, unknownResource);
 }
+
+int unknownResource3Create(const char *name) {
+	syscall(574, name);
+}
+
+int unknownResource3Destroy(int unknownResource) {
+	syscall(575, unknownResource);
+}
