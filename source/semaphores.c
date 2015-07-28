@@ -9,3 +9,7 @@ int createSemaphore(const char *name, int attributes, int startingCount, int max
 int removeSemaphore(int semaphore) {
 	return syscall(550, semaphore);
 }
+
+int pollSemaphore(int semaphore, int requiredCount) {
+	return syscall(554, semaphore, requiredCount);
+}
