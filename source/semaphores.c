@@ -18,6 +18,10 @@ int pollSemaphore(int semaphore, int requiredCount) {
 	return syscall(554, semaphore, requiredCount);
 }
 
+int signalSemaphore(int semaphore, int count) {
+	return syscall(555, semaphore, count);
+}
+
 int cancelSemaphore(int semaphore, int count, int *threadsReleased) {
 	return syscall(556, semaphore, count, threadsReleased);
 }
