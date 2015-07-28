@@ -3,9 +3,9 @@
 #include "eventflags.h"
 
 int createEventFlag(const char *name) {
-	syscall(538, name);
+	return syscall(538, name);
 }
 
 int destroyEventFlag(int unknownResource) {
-	syscall(539, unknownResource);
+	return syscall(539, unknownResource);
 }
