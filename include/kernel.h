@@ -2,10 +2,11 @@
 
 #include "syscall.h"
 
-#include "modules.h"
-#include "files.h"
-#include "semaphores.h"
-#include "eventflags.h"
 #include "memory.h"
-#include "mutexes.h"
+#include "file.h"
+#include "module.h"
+#include "eventflag.h"
+#include "semaphore.h"
+#include "barrier.h"
+#include "mutex.h"
 #include "unknown.h"

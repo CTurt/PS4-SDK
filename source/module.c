@@ -1,6 +1,6 @@
 #include "syscall.h"
 
-#include "modules.h"
+#include "module.h"
 
 int getFunctionAddressByName(int loadedModuleID, char *name, void **destination) {
 	return syscall(591, loadedModuleID, name, destination);
