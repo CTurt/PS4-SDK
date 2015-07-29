@@ -1,6 +1,6 @@
 #include "syscall.h"
 
-#include "eventflags.h"
+#include "eventflag.h"
 
 int createEventFlag(const char *name) {
 	return syscall(538, name);
