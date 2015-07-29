@@ -10,6 +10,10 @@ int removeSemaphore(int semaphore) {
 	return syscall(550, semaphore);
 }
 
+int openSemaphore(const char *name, int oflag, int mode, unsigned int value) {
+	return syscall(551, name, oflag, mode, value);
+}
+
 int closeSemaphore(int semaphore) {
 	return syscall(552, semaphore);
 }
