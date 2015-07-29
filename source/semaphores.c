@@ -10,6 +10,10 @@ int removeSemaphore(int semaphore) {
 	return syscall(550, semaphore);
 }
 
+int closeSemaphore(int semaphore) {
+	return syscall(552, semaphore);
+}
+
 int waitSemaphore(int semaphore, int requiredCount, int *microsecondTimeout) {
 	return syscall(553, semaphore, requiredCount, microsecondTimeout);
 }
