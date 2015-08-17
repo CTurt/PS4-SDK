@@ -2,6 +2,8 @@
 
 #include <stdlib.h>
 
+#define RESOLVE(module, name) getFunctionAddressByName(module, #name, &name)
+
 struct moduleInfo {
 	size_t size; // 0x0
 	char name[32]; // 0x8
@@ -12,6 +14,6 @@ struct moduleInfo {
 	unsigned int dataSize; // 0x120
 };
 
-int getFunctionAddressByName(int loadedModuleID, char *name, void **destination);
+int getFunctionAddressByName(int loadedModuleID, char *name, void *destination);
 int getLoadedModules(int *destination, int max, int *count);
 int getModuleInfo(int loadedModuleID, struct moduleInfo *destination);
