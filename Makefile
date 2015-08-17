@@ -3,8 +3,8 @@ ODIR	:=	build
 SDIR	:=	source
 IDIR	:=	include
 LDIR	:=	lib
-CFLAGS	:=	-I$(IDIR) -O2 -Wall -masm=intel -march=x86-64 -m64
-LFLAGS	:=	-L$(LDIR)
+CFLAGS	:=	-I$(IDIR) -O2 -nostartfiles -nostdlib -Wall -masm=intel -march=x86-64 -m64
+LFLAGS	:=	-L$(LDIR) -fPIC
 CFILES	:=	$(wildcard $(SDIR)/*.c)
 OBJS	:=	$(patsubst $(SDIR)/%.c, build/%.o, $(wildcard $(SDIR)/*.c))
 
