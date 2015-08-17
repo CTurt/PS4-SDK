@@ -2,6 +2,8 @@
 
 #include <stdlib.h>
 
+#define IP(a, b, c, d) (((a) << 24) + ((b) << 16) + ((c) << 8) + (d))
+
 #define SCENET 0xe
 
 #define AF_INET 2
