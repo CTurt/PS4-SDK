@@ -1,8 +1,6 @@
 #include "kernel.h"
 #include "network.h"
 
-#define IP(a, b, c, d) (((a) << 24) + ((b) << 16) + ((c) << 8) + (d))
-
 struct in_addr ip = { IP(192, 168, 0, 4) };
 const unsigned short port = 9023;
 const char *message = "Hello!";
