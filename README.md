@@ -11,7 +11,7 @@ At the moment, it is primarily focused on the kernel. For example, I've successf
     553 - int waitSemaphore(int semaphore, int requiredCount, int *microsecondTimeout);
     554 - int pollSemaphore(int semaphore, int requiredCount);
     555 - int signalSemaphore(int semaphore, int count);
-    556 - int cancelSemaphore(int semaphore, int count, int *threadsReleased);</code></pre>
+    556 - int cancelSemaphore(int semaphore, int count, int *threadsReleased);
 
 I've also made use of function pointers and the `kldsym` trick to resolve functions from other modules. For example, we it can use socket related functions from the `libSceNet.sprx` module:
 
