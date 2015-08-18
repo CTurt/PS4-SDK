@@ -4,7 +4,7 @@ ODIR	:=	build
 SDIR	:=	source
 IDIR	:=	include
 LDIR	:=	lib
-CFLAGS	:=	-I$(IDIR) -O2 -nostartfiles -nostdlib -Wall -masm=intel -march=x86-64 -m64
+CFLAGS	:=	-I$(IDIR) -O2 -nostartfiles -nostdlib -Wall -masm=intel -march=btver2 -mtune=btver2 -m64 -mabi=sysv
 LFLAGS	:=	-L$(LDIR) -fPIC
 CFILES	:=	$(wildcard $(SDIR)/*.c)
 OBJS	:=	$(patsubst $(SDIR)/%.c, build/%.o, $(wildcard $(SDIR)/*.c))

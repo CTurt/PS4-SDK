@@ -13,7 +13,7 @@ At the moment, it is primarily focused on the kernel. For example, I've successf
     555 - int signalSemaphore(int semaphore, int count);
     556 - int cancelSemaphore(int semaphore, int count, int *threadsReleased);
 
-I've also made use of function pointers and the `kldsym` trick to resolve functions from other modules. For example, we it can use socket related functions from the `libSceNet.sprx` module:
+I've also made use of function pointers and the `kldsym` trick to resolve functions from other modules. For example, it can use socket related functions from the `libSceNet.sprx` module:
 
     #define SCENET 0xe
 
@@ -31,3 +31,8 @@ I've also made use of function pointers and the `kldsym` trick to resolve functi
 
 ## Support
 Whilst the SDK isn't capable of a most basic functionality yet, such as displaying graphics, or receiving controller input, it is a solid foundation which will be improved upon over time, especially once we have code execution to test it.
+
+## Building
+Just run `make` on the directory.
+
+You must make sure that your compiler supports the System V AMD64 ABI calling convention. PS4-SDK relies on this for compatibility with Sony's functions and system calls.
