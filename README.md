@@ -30,7 +30,7 @@ I've also made use of function pointers and the `kldsym` trick to resolve functi
     }
 
 ## Support
-Whilst the SDK isn't capable of a most basic functionality yet, such as displaying graphics, or receiving controller input, it is a solid foundation which will be improved upon over time, especially once we have code execution to test it.
+Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics, or receiving controller input, it is a solid foundation which will be improved upon over time.
 
 ## Building
 Just run `make` on the directory.
