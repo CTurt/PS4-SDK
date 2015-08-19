@@ -21,9 +21,9 @@ struct sockaddr_in {
 	char sin_zero[8];
 };
 
-extern int (*socket)(const char *, int, int, int);
-extern int (*connect)(int, struct sockaddr_in *, int);
-extern int (*send)(int, const void *, size_t, int);
-extern int (*close)(int);
+extern int (*sceNetSocket)(const char *, int, int, int);
+extern int (*sceNetConnect)(int, struct sockaddr_in *, int);
+extern int (*sceNetSend)(int, const void *, size_t, int);
+extern int (*sceNetClose)(int);
 
 void initNetwork(void);
