@@ -18,3 +18,4 @@ struct moduleInfo {
 int getFunctionAddressByName(int loadedModuleID, char *name, void *destination);
 int getLoadedModules(int *destination, int max, int *count);
 int getModuleInfo(int loadedModuleID, struct moduleInfo *destination);
+int loadModule(char *name, int *idDestination);

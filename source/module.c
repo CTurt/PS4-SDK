@@ -13,3 +13,7 @@ int getLoadedModules(int *destination, int max, int *count) {
 int getModuleInfo(int loadedModuleID, struct moduleInfo *destination) {
 	return syscall(593, loadedModuleID, destination);
 }
+
+int loadModule(char *name, int *idDestination) {
+	return syscall(594, name, 0, idDestination, 0);
+}
