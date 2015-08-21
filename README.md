@@ -13,21 +13,9 @@ At the moment, it is primarily focused on the kernel. For example, I've successf
     555 - int signalSemaphore(int semaphore, int count);
     556 - int cancelSemaphore(int semaphore, int count, int *threadsReleased);
 
-I've also made use of function pointers and the `kldsym` trick to resolve functions from other modules. For example, it can use socket related functions from the `libSceNet.sprx` module:
+However, using function pointers and `getFunctionAddressByName`, we can call functions from other modules. For example, `strcpy` from `libSceLibcInternal.sprx`, and the socket related functions from `libSceNet.sprx`.
 
-    #define SCENET 0xe
-
-    #define RESOLVE(module, name) getFunctionAddressByName(module, #name, &name)
-
-    int (*socket)(const char *, int, int, int);
-
-    int main(void) {
-        RESOLVE(SCENET, socket);
-
-        int sock = socket("test", AF_INET, SOCK_STREAM, 0);
-
-        return 0;
-    }
+The [hello](https://github.com/CTurt/PS4-SDK/blob/master/examples/hello/source/main.c) example shows how to resolve functions from other modules, and perform system calls.
 
 ## Support
 Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics, or receiving controller input, it is a solid foundation which will be improved upon over time.
