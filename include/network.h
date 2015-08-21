@@ -25,6 +25,6 @@ struct sockaddr_in {
 extern int (*sceNetSocket)(const char *, int, int, int);
 extern int (*sceNetConnect)(int, struct sockaddr_in *, int);
 extern int (*sceNetSend)(int, const void *, size_t, int);
-extern int (*sceNetClose)(int);
+extern int (*sceNetSocketClose)(int);
 
 void initNetwork(void);
