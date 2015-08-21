@@ -5,8 +5,6 @@
 #define IP(a, b, c, d) (((a) << 0) + ((b) << 8) + ((c) << 16) + ((d) << 24))
 #define htons(a) __builtin_bswap16(a)
 
-#define SCENET 0xe
-
 #define AF_INET 0x0002
 #define SOCK_STREAM 1
 #define SOCK_DGRAM 2

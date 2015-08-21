@@ -8,8 +8,12 @@ int (*sceNetSend)(int, const void *, size_t, int);
 int (*sceNetSocketClose)(int);
 
 void initNetwork(void) {
-	RESOLVE(SCENET, sceNetSocket);
-	RESOLVE(SCENET, sceNetConnect);
-	RESOLVE(SCENET, sceNetSend);
-	RESOLVE(SCENET, sceNetSocketClose);
+	int libNet;
+	char libNetName[] = "libSceNet.sprx";
+	loadModule(libNetName, &libNet);
+	
+	RESOLVE(libNet, sceNetSocket);
+	RESOLVE(libNet, sceNetConnect);
+	RESOLVE(libNet, sceNetSend);
+	RESOLVE(libNet, sceNetSocketClose);
 }
