@@ -3,6 +3,13 @@
 #include "kernel.h"
 #include "network.h"
 
+#define debug(sock, format, ...)\
+	do {\
+		char fbuffer[512] = format, buffer[512];\
+		int size = sprintf(buffer, fbuffer, ##__VA_ARGS__);\
+		sceNetSend(sock, buffer, size, 0);\
+	} while(0)
+
 int _main(void) {
 	// Load modules
 	int libc;
@@ -24,6 +31,9 @@ int _main(void) {
 	char *(*strcpy)(char *destination, const char *source);
 	RESOLVE(libc, strcpy);
 	
+	int (*sprintf)(char *str, const char *format, ...);
+	RESOLVE(libc, sprintf);
+	
 	int (*sceNetSocket)(const char *, int, int, int);
 	RESOLVE(libNet, sceNetSocket);
 	
@@ -39,7 +49,6 @@ int _main(void) {
 	
 	// Connect to server and send message
 	char socketName[] = "debug";
-	char message[] = "Hello!";
 	
 	struct sockaddr_in server;
 	
@@ -50,7 +59,9 @@ int _main(void) {
 	
 	int sock = sceNetSocket(socketName, AF_INET, SOCK_STREAM, 0);
 	sceNetConnect(sock, &server, sizeof(server));
-	sceNetSend(sock, message, sizeof(message), 0);
+	
+	debug(sock, "PID: %d", syscall(20));
+	
 	sceNetSocketClose(sock);
 	
 	
