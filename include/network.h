@@ -6,6 +6,9 @@
 #define htons(a) __builtin_bswap16(a)
 
 #define AF_INET 0x0002
+
+#define IN_ADDR_ANY 0
+
 #define SOCK_STREAM 1
 #define SOCK_DGRAM 2
 
