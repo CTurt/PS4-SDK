@@ -2,11 +2,6 @@
 #include "network.h"
 
 int _main(void) {
-	// Pass address of a syscall gadget in rcx
-	register f rcx asm("rcx");
-	directSyscall = rcx;
-	
-	
 	// Load modules
 	int libc;
 	char libcName[] = "libSceLibcInternal.sprx";
