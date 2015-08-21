@@ -28,8 +28,8 @@ int _main(void) {
 	int (*sceNetSend)(int, const void *, size_t, int);
 	RESOLVE(libNet, sceNetSend);
 	
-	int (*sceNetClose)(int);
-	RESOLVE(libNet, sceNetClose);
+	int (*sceNetSocketClose)(int);
+	RESOLVE(libNet, sceNetSocketClose);
 	
 	
 	// Connect to server
@@ -55,7 +55,7 @@ int _main(void) {
 	int sock = sceNetSocket(socketName, AF_INET, SOCK_STREAM, 0);
 	sceNetConnect(sock, &server, sizeof(server));
 	sceNetSend(sock, message, sizeof(message), 0);
-	sceNetClose(sock);
+	sceNetSocketClose(sock);
 	
 	
 	// Return to browser
