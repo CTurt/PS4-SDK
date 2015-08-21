@@ -25,6 +25,7 @@ extern int (*sceNetSocketClose)(int);
 extern int (*sceNetConnect)(int, struct sockaddr_in *, int);
 extern int (*sceNetSend)(int, const void *, size_t, int);
 extern int (*sceNetBind)(int, struct sockaddr_in *, int);
+extern int (*sceNetListen)(int, int);
 extern int (*sceNetAccept)(int, struct sockaddr_in *, int *);
 extern int (*sceNetRecv)(int, void *, size_t, int);
 

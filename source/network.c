@@ -7,6 +7,7 @@ int (*sceNetSocketClose)(int);
 int (*sceNetConnect)(int, struct sockaddr_in *, int);
 int (*sceNetSend)(int, const void *, size_t, int);
 int (*sceNetBind)(int, struct sockaddr_in *, int);
+int (*sceNetListen)(int, int);
 int (*sceNetAccept)(int, struct sockaddr_in *, int *);
 int (*sceNetRecv)(int, void *, size_t, int);
 
@@ -20,6 +21,7 @@ void initNetwork(void) {
 	RESOLVE(libNet, sceNetConnect);
 	RESOLVE(libNet, sceNetSend);
 	RESOLVE(libNet, sceNetBind);
+	RESOLVE(libNet, sceNetListen);
 	RESOLVE(libNet, sceNetAccept);
 	RESOLVE(libNet, sceNetRecv);
 }
