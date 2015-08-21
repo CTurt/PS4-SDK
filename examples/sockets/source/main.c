@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "kernel.h"
 #include "network.h"
 
@@ -13,6 +15,9 @@ int _main(void) {
 	
 	
 	// Resolve functions
+	void *(*memset)(void *destination, int value, size_t num);
+	RESOLVE(libc, memset);
+	
 	void *(*memcpy)(void *destination, const void *source, size_t num);
 	RESOLVE(libc, memcpy);
 	
@@ -32,25 +37,16 @@ int _main(void) {
 	RESOLVE(libNet, sceNetSocketClose);
 	
 	
-	// Connect to server
+	// Connect to server and send message
 	char socketName[] = "debug";
+	char message[] = "Hello!";
+	
 	struct sockaddr_in server;
 	
 	server.sin_family = htons(AF_INET);
 	server.sin_addr.s_addr = IP(192, 168, 0, 4);
 	server.sin_port = htons(9023);
-	server.sin_zero[0] = 0;
-	server.sin_zero[1] = 0;
-	server.sin_zero[2] = 0;
-	server.sin_zero[3] = 0;
-	server.sin_zero[4] = 0;
-	server.sin_zero[5] = 0;
-	server.sin_zero[6] = 0;
-	server.sin_zero[7] = 0;
-	
-	
-	// Send a message
-	char message[] = "Hello!";
+	memset(server.sin_zero, 0, sizeof(server.sin_zero));
 	
 	int sock = sceNetSocket(socketName, AF_INET, SOCK_STREAM, 0);
 	sceNetConnect(sock, &server, sizeof(server));
