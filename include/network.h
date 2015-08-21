@@ -2,11 +2,12 @@
 
 #include <stdlib.h>
 
-#define IP(a, b, c, d) (((a) << 24) + ((b) << 16) + ((c) << 8) + (d))
+#define IP(a, b, c, d) (((a) << 0) + ((b) << 8) + ((c) << 16) + ((d) << 24))
+#define htons(a) __builtin_bswap16(a)
 
 #define SCENET 0xe
 
-#define AF_INET 2
+#define AF_INET 0x0200
 #define SOCK_STREAM 1
 #define SOCK_DGRAM 2
 
