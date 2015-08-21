@@ -7,7 +7,7 @@
 
 #define SCENET 0xe
 
-#define AF_INET 0x0200
+#define AF_INET 0x0002
 #define SOCK_STREAM 1
 #define SOCK_DGRAM 2
 
