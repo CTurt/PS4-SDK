@@ -21,10 +21,10 @@ typedef struct libusb_device_descriptor {
 	uint8_t bNumConfigurations;
 } libusb_device_descriptor;
 
-int (*sceUsbdInit)(void);
-void (*sceUsbdExit)(void);
-ssize_t (*sceUsbdGetDeviceList)(libusb_device ***list);
-void (*sceUsbdFreeDeviceList)(libusb_device **list, int unrefDevices);
-int (*sceUsbdGetDeviceDescriptor)(libusb_device *device, struct libusb_device_descriptor *desc);
+extern int (*sceUsbdInit)(void);
+extern void (*sceUsbdExit)(void);
+extern ssize_t (*sceUsbdGetDeviceList)(libusb_device ***list);
+extern void (*sceUsbdFreeDeviceList)(libusb_device **list, int unrefDevices);
+extern int (*sceUsbdGetDeviceDescriptor)(libusb_device *device, libusb_device_descriptor *desc);
 
 void initUsb(void);
