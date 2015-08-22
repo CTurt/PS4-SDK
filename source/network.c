@@ -1,6 +1,6 @@
-#include "network.h"
-
 #include "module.h"
+
+#include "network.h"
 
 int (*sceNetSocket)(const char *, int, int, int);
 int (*sceNetSocketClose)(int);
