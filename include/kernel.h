@@ -10,3 +10,4 @@
 #include "barrier.h"
 #include "mutex.h"
 #include "unknown.h"
+#include "registry.h"
