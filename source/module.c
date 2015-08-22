@@ -17,3 +17,7 @@ int getModuleInfo(int loadedModuleID, struct moduleInfo *destination) {
 int loadModule(char *name, int *idDestination) {
 	return syscall(594, name, 0, idDestination, 0);
 }
+
+int unloadModule(int id) {
+	return syscall(595, id, 0, 0);
+}
