@@ -18,12 +18,31 @@
 #define O_APPEND   0x1000
 #define O_NONBLOCK 0x2000
 
+#define DT_UNKNOWN 0
+#define DT_FIFO    1
+#define DT_CHR     2
+#define DT_DIR     4
+#define DT_BLK     6
+#define DT_REG     8
+#define DT_LNK     10
+#define DT_SOCK    12
+#define DT_WHT     14
+
 struct stat {
 	uint64_t d[9];
 	off_t st_size; // 0x48
 };
 
+struct dirent {
+	uint32_t d_fileno;
+	uint16_t d_reclen;
+	uint8_t d_type;
+	uint8_t d_namlen;
+	char d_name[255 + 1];
+};
+
 typedef uint16_t mode_t;
+
 
 ssize_t read(int fd, void *buf, size_t nbyte);
 ssize_t write(int fd, const void *buf, size_t count);
