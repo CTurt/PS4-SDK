@@ -69,3 +69,7 @@ typedef volatile s32 vs32;
 typedef volatile s64 vs64;
 
 typedef int ptrdiff_t;
+
+/* SCE types */
+
+typedef unsigned int SceKernelUseconds;
