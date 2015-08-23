@@ -3,6 +3,7 @@
 #include "types.h"
 
 #define IP(a, b, c, d) (((a) << 0) + ((b) << 8) + ((c) << 16) + ((d) << 24))
+#define htons(a) __builtin_bswap16(a)
 
 #define AF_INET 0x0002
 
