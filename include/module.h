@@ -2,8 +2,7 @@
 
 #include <stdlib.h>
 
-//#define RESOLVE(module, name) getFunctionAddressByName(module, #name, &name)
-#define RESOLVE(module, name) do { char n[] = #name; getFunctionAddressByName(module, n, &name); } while(0)
+#define RESOLVE(module, name) getFunctionAddressByName(module, #name, &name)
 
 struct moduleInfo {
 	size_t size; // 0x0

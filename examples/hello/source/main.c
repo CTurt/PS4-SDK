@@ -2,23 +2,18 @@
 
 #include "kernel.h"
 
-#define DATA (void *)0x926300000
-
 int _main(void) {
-	// Load modules
-	int libc;
-	char libcName[] = "libSceLibcInternal.sprx";
-	loadModule(libcName, &libc);
+	// Pass address of a syscall gadget in rcx
+	register f rcx asm("rcx");
+	directSyscall = rcx;
 	
 	
-	// Resolve functions
-	char *(*strcpy)(char *destination, const char *source);
-	RESOLVE(libc, strcpy);
+	// Init and resolve libraries
+	initLibc();
 	
 	
 	// Copy some data
-	char hello[] = "Hello!";
-	strcpy(DATA, hello);
+	strcpy(DATA, "Hello!");
 	
 	
 	// Use getpid system call
