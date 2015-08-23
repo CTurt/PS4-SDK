@@ -3,8 +3,6 @@
 #include "types.h"
 
 #define IP(a, b, c, d) (((a) << 0) + ((b) << 8) + ((c) << 16) + ((d) << 24))
-#define htons(a) __builtin_bswap16(a)
-#define htonl(a) __builtin_bswap64(a)
 
 #define AF_INET 0x0002
 
@@ -35,7 +33,20 @@ extern int (*sceNetConnect)(int, struct sockaddr *, int);
 extern int (*sceNetSend)(int, const void *, size_t, int);
 extern int (*sceNetBind)(int, struct sockaddr *, int);
 extern int (*sceNetListen)(int, int);
-extern int (*sceNetAccept)(int, struct sockaddr *, int *);
+extern int (*sceNetAccept)(int, struct sockaddr *, unsigned int *);
 extern int (*sceNetRecv)(int, void *, size_t, int);
+
+extern int (*sceNetGetsockname)(int, struct sockaddr *, unsigned int *);
+
+extern const char (*sceNetInetNtop)(int af, const void *src, char *dst, int size);
+extern int (*sceNetInetPton)(int af, const char *src, void *dst);
+
+extern uint64_t (*sceNetHtonll)(uint64_t host64);
+extern uint32_t (*sceNetHtonl)(uint32_t host32);
+extern uint16_t (*sceNetHtons)(uint16_t host16);
+extern uint64_t (*sceNetNtohll)(uint64_t net64);
+extern uint32_t (*sceNetNtohl)(uint32_t net32);
+extern uint16_t (*sceNetNtohs)(uint16_t net16);
+
 
 void initNetwork(void);
