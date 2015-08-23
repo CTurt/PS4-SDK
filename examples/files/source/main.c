@@ -44,13 +44,16 @@ int _main(void) {
 		return 1;
 	}
 	
-	getdents(dfd, buffer, sizeof(buffer));
-	dent = (struct dirent *)buffer;
-	
-	while(dent->d_fileno) {
-		debug(sock, "%s\n", dent->d_name);
+	while(getdents(dfd, buffer, sizeof(buffer)) != 0) {
+        dent = (struct dirent *)buffer;
+
+        while(dent->d_fileno) {
+                debug(sock, "%s\n", dent->d_name);
+
+                dent = (struct dirent *)((void *)dent + dent->d_reclen);
+        }
 		
-		dent = (struct dirent *)((void *)dent + dent->d_reclen);
+		memset(buffer, 0, sizeof(buffer));
 	}
 	
 	
