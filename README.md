@@ -11,7 +11,9 @@ The [hello](https://github.com/CTurt/PS4-SDK/blob/master/examples/hello/source/m
 ## Support
 Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics, or receiving controller input, it is a solid foundation which will be improved upon over time.
 
-## Building
-Just run `make` on the directory.
+## Building and installing
+Just run `make` on the `PS4-SDK` directory to build the library.
+
+Then create an environment variable called, `PS4_SDK` which points to the base directory of the repository.
 
 You must make sure that your compiler supports the System V AMD64 ABI calling convention. PS4-SDK relies on this for compatibility with Sony's functions and system calls.

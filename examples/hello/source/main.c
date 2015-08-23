@@ -1,5 +1,3 @@
-#include <stdlib.h>
-
 #include "kernel.h"
 #include "libc.h"
 
