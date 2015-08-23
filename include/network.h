@@ -4,6 +4,7 @@
 
 #define IP(a, b, c, d) (((a) << 0) + ((b) << 8) + ((c) << 16) + ((d) << 24))
 #define htons(a) __builtin_bswap16(a)
+#define htonl(a) __builtin_bswap64(a)
 
 #define AF_INET 0x0002
 
@@ -23,13 +24,18 @@ struct sockaddr_in {
 	char sin_zero[8];
 };
 
+struct sockaddr {
+	unsigned short sa_family;
+	char sa_data[14];
+};
+
 extern int (*sceNetSocket)(const char *, int, int, int);
 extern int (*sceNetSocketClose)(int);
-extern int (*sceNetConnect)(int, struct sockaddr_in *, int);
+extern int (*sceNetConnect)(int, struct sockaddr *, int);
 extern int (*sceNetSend)(int, const void *, size_t, int);
-extern int (*sceNetBind)(int, struct sockaddr_in *, int);
+extern int (*sceNetBind)(int, struct sockaddr *, int);
 extern int (*sceNetListen)(int, int);
-extern int (*sceNetAccept)(int, struct sockaddr_in *, int *);
+extern int (*sceNetAccept)(int, struct sockaddr *, int *);
 extern int (*sceNetRecv)(int, void *, size_t, int);
 
 void initNetwork(void);
