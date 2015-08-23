@@ -5,8 +5,8 @@
 
 #define debug(sock, format, ...)\
 	do {\
-		char fbuffer[512] = format, buffer[512];\
-		int size = sprintf(buffer, fbuffer, ##__VA_ARGS__);\
+		buffer[512];\
+		int size = sprintf(buffer, format, ##__VA_ARGS__);\
 		sceNetSend(sock, buffer, size, 0);\
 	} while(0)
 
