@@ -1,6 +1,7 @@
 #include <stdlib.h>
 
 #include "kernel.h"
+#include "libc.h"
 
 int _main(void) {
 	// Pass address of a syscall gadget in rcx
