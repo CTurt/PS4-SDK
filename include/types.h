@@ -69,6 +69,9 @@ typedef volatile s32 vs32;
 typedef volatile s64 vs64;
 
 typedef int ptrdiff_t;
+typedef unsigned int *uintptr_t;
+typedef int *intptr_t;
+typedef unsigned int off_t;
 
 /* SCE types */
 
