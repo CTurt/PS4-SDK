@@ -9,6 +9,7 @@ void *(*memcpy)(void *destination, const void *source, size_t num);
 char *(*strcpy)(char *destination, const char *source);
 size_t (*strlen)(const char *s);
 int (*sprintf)(char *str, const char *format, ...);
+int (*snprintf)(char *str, size_t size, const char *format, ...);
 int (*sscanf)(const char *str, const char *format, ...);
 char *(*strchr)(const char *s, int c);
 char *(*strrchr)(const char *s, int c);
@@ -17,7 +18,7 @@ char *(*strrchr)(const char *s, int c);
 void initLibc(void) {
 	int libc;
 	loadModule("libSceLibcInternal.sprx", &libc);
-	
+
 	RESOLVE(libc, malloc);
 	RESOLVE(libc, free);
 	RESOLVE(libc, memset);
@@ -25,6 +26,7 @@ void initLibc(void) {
 	RESOLVE(libc, strcpy);
 	RESOLVE(libc, strlen);
 	RESOLVE(libc, sprintf);
+	RESOLVE(libc, snprintf);
 	RESOLVE(libc, sscanf);
 	RESOLVE(libc, strchr);
 	RESOLVE(libc, strrchr);
