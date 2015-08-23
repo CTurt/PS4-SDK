@@ -6,8 +6,8 @@ AS		:=	gcc
 OBJCOPY	:=	objcopy
 ODIR	:=	build
 SDIR	:=	source
-IDIRS	:=	-I. -I$(PS4_SDK)/include -Iinclude
-LDIRS	:=	-L. -L$(PS4_SDK)/ -Llib
+IDIRS	:=	-I$(PS4SDK)/include -I. -Iinclude
+LDIRS	:=	-L$(PS4SDK) -L. -Llib
 CFLAGS	:=	$(IDIRS) -O2 -fno-builtin -nostartfiles -nostdlib -Wall -masm=intel -march=btver2 -mtune=btver2 -m64 -mabi=sysv -DTEXT_ADDRESS=$(TEXT) -DDATA_ADDRESS=$(DATA)
 SFLAGS	:=	-nostartfiles -nostdlib -march=btver2 -mtune=btver2
 LFLAGS	:=	$(LDIRS) -Ttext=$(TEXT) -Tdata=$(DATA)
