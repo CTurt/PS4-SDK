@@ -23,13 +23,14 @@ struct stat {
 	off_t st_size; // 0x48
 };
 
-typedef	uint16_t mode_t;
+typedef uint16_t mode_t;
 
 ssize_t read(int fd, void *buf, size_t nbyte);
 ssize_t write(int fd, const void *buf, size_t count);
 int open(const char *path, int flags, int mode);
 int close(int fd);
 int unlink(const char *pathname);
+int stat(const char *path, struct stat *sb);
 int rename(const char *oldpath, const char *newpath);
 int mkdir(const char *pathname, mode_t mode);
 int rmdir(const char *path);
