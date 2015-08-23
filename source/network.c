@@ -13,8 +13,7 @@ int (*sceNetRecv)(int, void *, size_t, int);
 
 void initNetwork(void) {
 	int libNet;
-	char libNetName[] = "libSceNet.sprx";
-	loadModule(libNetName, &libNet);
+	loadModule("libSceNet.sprx", &libNet);
 	
 	RESOLVE(libNet, sceNetSocket);
 	RESOLVE(libNet, sceNetSocketClose);
