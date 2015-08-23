@@ -2,6 +2,7 @@
 
 #include "libc.h"
 
+void *(*malloc)(size_t size);
 void *(*memset)(void *destination, int value, size_t num);
 void *(*memcpy)(void *destination, const void *source, size_t num);
 char *(*strcpy)(char *destination, const char *source);
@@ -15,7 +16,8 @@ char *(*strrchr)(const char *s, int c);
 void initLibc(void) {
 	int libc;
 	loadModule("libSceLibcInternal.sprx", &libc);
-
+	
+	RESOLVE(libc, malloc);
 	RESOLVE(libc, memset);
 	RESOLVE(libc, memcpy);
 	RESOLVE(libc, strcpy);
