@@ -14,6 +14,8 @@ Whilst the SDK isn't capable of most basic functionality yet, such as displaying
 ## Building and installing
 Just run `make` on the `PS4-SDK` directory to build the library.
 
-Then create an environment variable called, `PS4_SDK` which points to the base directory of the repository.
+Then create an environment variable called, `PS4SDK` which points to the base directory of the repository, using the Unix path style; for example:
+
+    /C/Users/Chris/Documents/GitHub/PS4-SDK
 
 You must make sure that your compiler supports the System V AMD64 ABI calling convention. PS4-SDK relies on this for compatibility with Sony's functions and system calls.
