@@ -1,6 +1,6 @@
-#include <stdlib.h>
-
 #include "kernel.h"
+
+#include "libc.h"
 #include "network.h"
 
 #define debug(sock, format, ...)\
