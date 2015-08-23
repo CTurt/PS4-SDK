@@ -32,7 +32,7 @@ int _main(void) {
 	memset(server.sin_zero, 0, sizeof(server.sin_zero));
 	
 	int sock = sceNetSocket(socketName, AF_INET, SOCK_STREAM, 0);
-	sceNetConnect(sock, &server, sizeof(server));
+	sceNetConnect(sock, (struct sockaddr *)&server, sizeof(server));
 	
 	debug(sock, "PID: %d", syscall(20));
 	
