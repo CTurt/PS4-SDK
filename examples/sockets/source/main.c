@@ -11,40 +11,14 @@
 	} while(0)
 
 int _main(void) {
-	// Load modules
-	int libc;
-	char libcName[] = "libSceLibcInternal.sprx";
-	loadModule(libcName, &libc);
-	
-	int libNet;
-	char libNetName[] = "libSceNet.sprx";
-	loadModule(libNetName, &libNet);
+	// Pass address of a syscall gadget in rcx
+	register f rcx asm("rcx");
+	directSyscall = rcx;
 	
 	
-	// Resolve functions
-	void *(*memset)(void *destination, int value, size_t num);
-	RESOLVE(libc, memset);
-	
-	void *(*memcpy)(void *destination, const void *source, size_t num);
-	RESOLVE(libc, memcpy);
-	
-	char *(*strcpy)(char *destination, const char *source);
-	RESOLVE(libc, strcpy);
-	
-	int (*sprintf)(char *str, const char *format, ...);
-	RESOLVE(libc, sprintf);
-	
-	int (*sceNetSocket)(const char *, int, int, int);
-	RESOLVE(libNet, sceNetSocket);
-	
-	int (*sceNetConnect)(int, struct sockaddr_in *, int);
-	RESOLVE(libNet, sceNetConnect);
-	
-	int (*sceNetSend)(int, const void *, size_t, int);
-	RESOLVE(libNet, sceNetSend);
-	
-	int (*sceNetSocketClose)(int);
-	RESOLVE(libNet, sceNetSocketClose);
+	// Init and resolve libraries
+	initLibc();
+	initNetwork();
 	
 	
 	// Connect to server and send message
