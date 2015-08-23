@@ -14,6 +14,10 @@ int close(int fd) {
 	return syscall(6, fd);
 }
 
+int fstat(int fd, struct stat *sb) {
+	return syscall(189, fd, sb);
+}
+
 int getdents(int fd, char *buf, size_t count) {
 	return syscall(272, fd, buf, count);
 }
