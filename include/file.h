@@ -2,6 +2,11 @@
 
 #include "types.h"
 
+struct stat {
+	uint64_t d[9];
+	off_t st_size; // 0x48
+};
+
 ssize_t read(int fd, void *buf, size_t nbyte);
 int open(char *path, int flags, int mode);
 int close(int fd);
