@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdlib.h>
+#include "types.h"
 
 #define RESOLVE(module, name) getFunctionAddressByName(module, #name, &name)
 
