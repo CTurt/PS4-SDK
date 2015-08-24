@@ -20,7 +20,7 @@ char *(*strrchr)(const char *s, int c);
 
 char *(*asctime)(const struct tm *tm);
 char *(*asctime_r)(const struct tm *tm, char *buf);
-extern char *(*ctime)(const time_t *timep);
+char *(*ctime)(const time_t *timep);
 char *(*ctime_r)(const time_t *timep, char *buf);
 struct tm *(*gmtime)(const time_t *timep);
 struct tm *(*gmtime_r)(const time_t *timep, struct tm *result);
