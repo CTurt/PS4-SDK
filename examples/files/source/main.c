@@ -1,7 +1,4 @@
-#include "kernel.h"
-
-#include "libc.h"
-#include "network.h"
+#include "ps4.h"
 
 #define debug(sock, ...) \
 	do { \
@@ -14,8 +11,7 @@ int _main(void) {
 	// Init and resolve libraries
 	initLibc();
 	initNetwork();
-	
-	
+
 	// Connect to server and send message
 	char socketName[] = "debug";
 
@@ -28,17 +24,17 @@ int _main(void) {
 
 	int sock = sceNetSocket(socketName, AF_INET, SOCK_STREAM, 0);
 	sceNetConnect(sock, (struct sockaddr *)&server, sizeof(server));
-	
+
 
 	char buffer[512];
 	struct dirent *dent;
-	
+
 	int dfd = open("/", O_RDONLY, 0);
 	if(dfd < 0) {
 		debug(sock, "Invalid directory.\n");
 		return 1;
 	}
-	
+
 	while(getdents(dfd, buffer, sizeof(buffer)) != 0) {
         dent = (struct dirent *)buffer;
 
@@ -47,14 +43,14 @@ int _main(void) {
 
                 dent = (struct dirent *)((void *)dent + dent->d_reclen);
         }
-		
+
 		memset(buffer, 0, sizeof(buffer));
 	}
-	
-	
+
+
 	// Return to browser
 	close(dfd);
 	sceNetSocketClose(sock);
-	
+
 	return 0;
 }

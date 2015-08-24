@@ -1,5 +1,4 @@
-#include "kernel.h"
-#include "libc.h"
+#include "ps4.h"
 
 int _main(void) {
 	// Init and resolve libraries

@@ -1,7 +1,4 @@
-#include "kernel.h"
-
-#include "libc.h"
-#include "network.h"
+#include "ps4.h"
 
 #define debug(sock, format, ...)\
 	do {\
