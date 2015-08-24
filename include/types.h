@@ -71,7 +71,32 @@ typedef volatile s64 vs64;
 typedef int ptrdiff_t;
 typedef unsigned int *uintptr_t;
 typedef int *intptr_t;
-typedef unsigned int off_t;
+
+/* POSIX types */
+
+typedef uint32_t __dev_t;
+typedef uint32_t blksize_t;
+typedef int64_t  blkcnt_t;
+typedef uint32_t dev_t;
+typedef uint32_t fflags_t;
+typedef uint32_t gid_t;
+typedef uint32_t ino_t;
+typedef uint16_t mode_t;
+typedef uint16_t nlink_t;
+typedef int64_t  off_t;
+typedef uint32_t uid_t;
+typedef	int64_t time_t;
+typedef	long suseconds_t;
+
+struct timespec {
+	time_t tv_sec;
+	long tv_nsec;
+};
+
+struct timeval {
+	time_t tv_sec;
+	suseconds_t tv_usec;
+};
 
 /* SCE types */
 

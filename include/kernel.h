@@ -2,10 +2,7 @@
 
 #include "types.h"
 
-typedef struct {
-	int64_t tv_sec;
-	long tv_usec;
-} SceKernelTimeval;
+typedef struct timeval SceKernelTimeval;
 
 extern unsigned int (*sceKernelSleep)(unsigned int seconds);
 extern int (*sceKernelUsleep)(unsigned int microseconds);

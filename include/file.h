@@ -29,8 +29,25 @@
 #define DT_WHT     14
 
 struct stat {
-	uint64_t d[9];
-	off_t st_size; // 0x48
+	__dev_t   st_dev;		/* inode's device */
+	ino_t	  st_ino;		/* inode's number */
+	mode_t	  st_mode;		/* inode protection mode */
+	nlink_t	  st_nlink;		/* number of hard links */
+	uid_t	  st_uid;		/* user ID of the file's owner */
+	gid_t	  st_gid;		/* group ID of the file's group */
+	__dev_t   st_rdev;		/* device type */
+	struct	timespec st_atim;	/* time of last access */
+	struct	timespec st_mtim;	/* time of last data modification */
+	struct	timespec st_ctim;	/* time of last file status change */
+	off_t	  st_size;		/* file size, in bytes */
+	blkcnt_t st_blocks;		/* blocks allocated for file */
+	blksize_t st_blksize;		/* optimal blocksize for I/O */
+	fflags_t  st_flags;		/* user defined flags for file */
+	uint32_t st_gen;		/* file generation number */
+	int32_t st_lspare;
+	struct timespec st_birthtim;	/* time of file creation */
+	unsigned int :(8 / 2) * (16 - (int)sizeof(struct timespec));
+	unsigned int :(8 / 2) * (16 - (int)sizeof(struct timespec));
 };
 
 struct dirent {
@@ -40,9 +57,6 @@ struct dirent {
 	uint8_t d_namlen;
 	char d_name[255 + 1];
 };
-
-typedef uint16_t mode_t;
-
 
 ssize_t read(int fd, void *buf, size_t nbyte);
 ssize_t write(int fd, const void *buf, size_t count);
