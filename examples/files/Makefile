@@ -10,7 +10,7 @@ IDIRS	:=	-I$(PS4SDK)/include -I. -Iinclude
 LDIRS	:=	-L$(PS4SDK) -L. -Llib
 CFLAGS	:=	$(IDIRS) -O2 -fno-builtin -nostartfiles -nostdlib -Wall -masm=intel -march=btver2 -mtune=btver2 -m64 -mabi=sysv -mcmodel=large -DTEXT_ADDRESS=$(TEXT) -DDATA_ADDRESS=$(DATA)
 SFLAGS	:=	-nostartfiles -nostdlib -march=btver2 -mtune=btver2
-LFLAGS	:=	$(LDIRS) -Ttext=$(TEXT) -Tdata=$(DATA)
+LFLAGS	:=	$(LDIRS) $(PS4SDK)/crt0.s -Ttext=$(TEXT) -Tdata=$(DATA)
 CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)
 OBJS	:=	$(patsubst $(SDIR)/%.c, build/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, build/%.o, $(SFILES))
