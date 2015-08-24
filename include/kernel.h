@@ -2,17 +2,15 @@
 
 #include "types.h"
 
-#include "syscall.h"
+typedef struct {
+	int64_t tv_sec;
+	long tv_usec;
+} SceKernelTimeval;
 
-#include "memory.h"
-#include "file.h"
-#include "module.h"
-#include "eventflag.h"
-#include "semaphore.h"
-#include "barrier.h"
-#include "mutex.h"
-#include "unknown.h"
-#include "registry.h"
+extern unsigned int (*sceKernelSleep)(unsigned int seconds);
+extern int (*sceKernelUsleep)(unsigned int microseconds);
+extern int (*sceKernelGettimeofday)(SceKernelTimeval *tp);
+extern uint64_t (*sceKernelGetProcessTime)(void);
+extern int (*sceKernelGetCurrentCpu)(void);
 
-#define TEXT (void *)TEXT_ADDRESS
-#define DATA (void *)DATA_ADDRESS
+void initKernel(void);
