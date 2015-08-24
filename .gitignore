@@ -3,4 +3,8 @@ examples/*/build
 examples/*/*.bin
 examples/*/*.bat
 examples/*/*.exe
+examples/*/*/build
+examples/*/*/*.bin
+examples/*/*/*.bat
+examples/*/*/*.exe
 libPS4-SDK.a
