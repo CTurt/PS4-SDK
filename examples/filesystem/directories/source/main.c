@@ -46,13 +46,13 @@ int _main(void) {
 	}
 
 	while(getdents(dfd, buffer, sizeof(buffer)) != 0) {
-        dent = (struct dirent *)buffer;
+		dent = (struct dirent *)buffer;
 
-        while(dent->d_fileno) {
-                debug(sock, "[%s]: %s\n", entryName(dent->d_type), dent->d_name);
+		while(dent->d_fileno) {
+				debug(sock, "[%s]: %s\n", entryName(dent->d_type), dent->d_name);
 
-                dent = (struct dirent *)((void *)dent + dent->d_reclen);
-        }
+				dent = (struct dirent *)((void *)dent + dent->d_reclen);
+		}
 
 		memset(buffer, 0, sizeof(buffer));
 	}
