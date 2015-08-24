@@ -17,7 +17,7 @@ OBJS	:=	$(patsubst $(SDIR)/%.c, build/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, bu
 
 LIBS	:=	-lPS4-SDK
 
-TARGET = $(shell basename $(CURDIR))
+TARGET = $(shell basename $(CURDIR)).bin
 
 $(TARGET): $(ODIR) $(OBJS)
 	$(CC) $(PS4SDK)/crt0.s $(ODIR)/*.o -o temp.t $(CFLAGS) $(LFLAGS) $(LIBS)
