@@ -22,6 +22,11 @@ typedef struct libusb_device_descriptor {
 	uint8_t bNumConfigurations;
 } libusb_device_descriptor;
 
+enum libusb_endpoint_direction {
+	LIBUSB_ENDPOINT_IN = 0x80,
+	LIBUSB_ENDPOINT_OUT = 0x00
+};
+
 extern int (*sceUsbdInit)(void);
 extern void (*sceUsbdExit)(void);
 extern ssize_t (*sceUsbdGetDeviceList)(libusb_device ***list);
