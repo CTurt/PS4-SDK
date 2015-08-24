@@ -3,6 +3,7 @@
 #include "types.h"
 
 typedef struct libusb_device libusb_device;
+typedef struct libusb_device_handle libusb_device_handle;
 
 typedef struct libusb_device_descriptor {
 	uint8_t bLength;
@@ -26,5 +27,8 @@ extern void (*sceUsbdExit)(void);
 extern ssize_t (*sceUsbdGetDeviceList)(libusb_device ***list);
 extern void (*sceUsbdFreeDeviceList)(libusb_device **list, int unrefDevices);
 extern int (*sceUsbdGetDeviceDescriptor)(libusb_device *device, libusb_device_descriptor *desc);
+extern int (*sceUsbdOpen)(libusb_device *dev, libusb_device_handle **devh);
+extern libusb_device_handle *(*sceUsbdOpenDeviceWithVidPid)(unsigned short vendorId, unsigned short productId);
+extern int (*sceUsbdBulkTransfer)(struct libusb_device_handle *devh, unsigned char endpoint, unsigned char *data, int length, int *transferred, unsigned int timeout);
 
 void initUsb(void);
