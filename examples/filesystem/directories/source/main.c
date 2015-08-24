@@ -7,12 +7,21 @@
 		sceNetSend(sock, buffer, size, 0); \
 	} while(0)
 
+char *entryName(int entryType) {
+	switch(entryType) {
+		case DT_DIR: return "DIR";
+		case DT_REG: return "FILE";
+		default: return "OTHER";
+	}
+}
+
 int _main(void) {
 	// Init and resolve libraries
 	initLibc();
 	initNetwork();
-
-	// Connect to server and send message
+	
+	
+	// Connect to server
 	char socketName[] = "debug";
 
 	struct sockaddr_in server;
@@ -25,7 +34,8 @@ int _main(void) {
 	int sock = sceNetSocket(socketName, AF_INET, SOCK_STREAM, 0);
 	sceNetConnect(sock, (struct sockaddr *)&server, sizeof(server));
 
-
+	
+	// Read / directory
 	char buffer[512];
 	struct dirent *dent;
 
@@ -39,7 +49,7 @@ int _main(void) {
         dent = (struct dirent *)buffer;
 
         while(dent->d_fileno) {
-                debug(sock, "%s\n", dent->d_name);
+                debug(sock, "[%s]: %s\n", entryName(dent->d_type), dent->d_name);
 
                 dent = (struct dirent *)((void *)dent + dent->d_reclen);
         }
