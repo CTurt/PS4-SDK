@@ -2,11 +2,6 @@
 #include "libc.h"
 
 int _main(void) {
-	// Pass address of a syscall gadget in rcx
-	register f rcx asm("rcx");
-	directSyscall = rcx;
-
-
 	// Init and resolve libraries
 	initLibc();
 
