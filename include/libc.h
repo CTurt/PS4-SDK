@@ -18,5 +18,10 @@ extern int (*sscanf)(const char *str, const char *format, ...);
 extern char *(*strchr)(const char *s, int c);
 extern char *(*strrchr)(const char *s, int c);
 
+extern char *(*asctime)(const struct tm *tm);
+extern char *(*ctime)(const time_t *timep);
+extern struct tm *(*gmtime)(const time_t *timep);
+extern struct tm *(*localtime)(const time_t *timep);
+extern time_t (*mktime)(struct tm *tm);
 
 void initLibc(void);

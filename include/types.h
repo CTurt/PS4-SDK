@@ -85,8 +85,8 @@ typedef uint16_t mode_t;
 typedef uint16_t nlink_t;
 typedef int64_t  off_t;
 typedef uint32_t uid_t;
-typedef	int64_t time_t;
-typedef	long suseconds_t;
+typedef int64_t time_t;
+typedef long suseconds_t;
 
 struct timespec {
 	time_t tv_sec;
@@ -96,6 +96,17 @@ struct timespec {
 struct timeval {
 	time_t tv_sec;
 	suseconds_t tv_usec;
+};
+struct tm {
+	int tm_sec;
+	int tm_min;
+	int tm_hour;
+	int tm_mday;
+	int tm_mon;
+	int tm_year;
+	int tm_wday;
+	int tm_yday;
+	int tm_isdst;
 };
 
 /* SCE types */

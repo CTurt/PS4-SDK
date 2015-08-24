@@ -18,6 +18,12 @@ int (*sscanf)(const char *str, const char *format, ...);
 char *(*strchr)(const char *s, int c);
 char *(*strrchr)(const char *s, int c);
 
+char *(*asctime)(const struct tm *tm);
+char *(*ctime)(const time_t *timep);
+struct tm *(*gmtime)(const time_t *timep);
+struct tm *(*localtime)(const time_t *timep);
+time_t (*mktime)(struct tm *tm);
+
 
 void initLibc(void) {
 	int libc;
@@ -38,4 +44,10 @@ void initLibc(void) {
 	RESOLVE(libc, sscanf);
 	RESOLVE(libc, strchr);
 	RESOLVE(libc, strrchr);
+
+	RESOLVE(libc, asctime);
+	RESOLVE(libc, ctime);
+	RESOLVE(libc, gmtime);
+	RESOLVE(libc, localtime);
+	RESOLVE(libc, mktime);
 }
