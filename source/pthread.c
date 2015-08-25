@@ -7,6 +7,8 @@ void (*scePthreadExit)(void *value);
 int (*scePthreadDetach)(ScePthread thread);
 int (*scePthreadJoin)(ScePthread thread, void **value_ptr);
 void (*scePthreadYield)(void);
+ScePthread (*scePthreadSelf)(void);
+int (*scePthreadCancel)(ScePthread thread);
 
 int (*scePthreadMutexInit)(ScePthreadMutex *mutex, const ScePthreadMutexattr *attr, const char *name);
 int (*scePthreadMutexDestroy)(ScePthreadMutex *mutex);
@@ -25,6 +27,8 @@ void initPthread(void)
 	RESOLVE(libkernel, scePthreadDetach);
 	RESOLVE(libkernel, scePthreadJoin);
 	RESOLVE(libkernel, scePthreadYield);
+	RESOLVE(libkernel, scePthreadSelf);
+	RESOLVE(libkernel, scePthreadCancel);
 
 	RESOLVE(libkernel, scePthreadMutexInit);
 	RESOLVE(libkernel, scePthreadMutexDestroy);
