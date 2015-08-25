@@ -5,12 +5,12 @@
 
 };
 //from libSceCamera.sprx firmwarw 1.76. Other can change 
-typedef struct SceCameraStartParam {
+typedef struct SceCameraStartParameter {
 	uint32_t size; //0x0  <- set to  0x18 before call 24 bytes it is a check hardcoded in libSceCamera.sprx
 	uint32_t unknown1;//0x4
 	uint32_t unknown2;//0x8
 	void * unknown3;//0xc
-}SceCameraStartParam;
+}SceCameraStartParameter;
 
 typedef struct SceCameraFrameData {
 	uint32_t size; //0x0  <- set to  size< 0xb1+0x158=0x209 (521) it is a check hardcoded in libSceCamera.sprx
@@ -35,7 +35,7 @@ extern int (*sceCameraOpen)(int userid, int type, int index);
 extern int (*sceCameraClose)(int handle);
 extern int (*sceCameraIsAttached)(int index);
 extern int (*sceCameraGetFrameData)(int handle, SceCameraFrameData *frame);
-extern int (*sceCameraStart)(int handle, SceCameraStartParam *param);
+extern int (*sceCameraStart)(int handle, SceCameraStartParameter *param);
 extern int (*sceCameraStop)(int handle);
 extern int (*sceCameraGetDeviceInfo)(int handle, sceCameraDeviceInfo *info);
 extern int (*sceCameraGetDeviceConfig)(int handle, sceCameraDeviceInfo *config);
