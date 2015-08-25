@@ -11,6 +11,8 @@ extern void (*scePthreadExit)(void *value);
 extern int (*scePthreadDetach)(ScePthread thread);
 extern int (*scePthreadJoin)(ScePthread thread, void **value_ptr);
 extern void (*scePthreadYield)(void);
+extern ScePthread (*scePthreadSelf)(void);
+extern int (*scePthreadCancel)(ScePthread thread);
 
 extern int (*scePthreadMutexInit)(ScePthreadMutex *mutex, const ScePthreadMutexattr *attr, const char *name);
 extern int (*scePthreadMutexDestroy)(ScePthreadMutex *mutex);
