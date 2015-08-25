@@ -15,22 +15,22 @@ At the moment, it is primarily focused on the kernel. For example, [all semaphor
 
 However, using function pointers and the `RESOLVE` macro, we can call functions from other modules. For example, [the socket functions](https://github.com/CTurt/PS4-SDK/blob/master/source/network.c) from `libSceNet.sprx`.
 
-The [hello](https://github.com/CTurt/PS4-SDK/blob/master/examples/hello/source/main.c) example shows how to initialise libc, and perform system calls.
-
 ## Support
 Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics, or receiving controller input, it is a solid foundation which will be improved upon over time.
 
 ## Examples
-`filesystem/directories` - Read all directories and files within a directory, and send names over a socket
-
-`filesystem/files` - Read a file, and send contents over a socket
-
 `hello` - Load libc module and perform `getpid` system call
 
 `sockets` - Send a message over a TCP socket
 
 `threads` - Create and wait for a thread to increment a variable
 
-`usb/list_devices` - List information about all USB devices connected
+### Filesystem
+`directories` - Read all directories and files within a directory
 
-`usb/usb_storage` - Read raw image from a USB flash drive
+`files` - Read a file's size, and its contents
+
+### USB
+`list_devices` - List information about all USB devices connected
+
+`storage` - Read raw image from a USB flash drive
