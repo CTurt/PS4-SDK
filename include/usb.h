@@ -42,6 +42,16 @@ enum libusb_descriptor_type {
 	LIBUSB_DT_SS_ENDPOINT_COMPANION = 0x30
 };
 
+#define LIBUSB_ENDPOINT_ADDRESS_MASK 0x0f
+#define LIBUSB_ENDPOINT_DIR_MASK 0x80
+
+enum libusb_endpoint_direction {
+	LIBUSB_ENDPOINT_IN = 0x80,
+	LIBUSB_ENDPOINT_OUT = 0x00
+};
+
+#define LIBUSB_TRANSFER_TYPE_MASK 0x03
+
 enum libusb_transfer_type {
 	LIBUSB_TRANSFER_TYPE_CONTROL = 0,
 	LIBUSB_TRANSFER_TYPE_ISOCHRONOUS = 1,
@@ -67,16 +77,9 @@ enum libusb_standard_request {
 };
 
 enum libusb_request_type {
-	/** Standard */
 	LIBUSB_REQUEST_TYPE_STANDARD = (0x00 << 5),
-
-	/** Class */
 	LIBUSB_REQUEST_TYPE_CLASS = (0x01 << 5),
-
-	/** Vendor */
 	LIBUSB_REQUEST_TYPE_VENDOR = (0x02 << 5),
-
-	/** Reserved */
 	LIBUSB_REQUEST_TYPE_RESERVED = (0x03 << 5)
 };
 
@@ -149,11 +152,6 @@ struct libusb_config_descriptor {
 	const struct libusb_interface *interface;
 	const unsigned char *extra;
 	int extra_length;
-};
-
-enum libusb_endpoint_direction {
-	LIBUSB_ENDPOINT_IN = 0x80,
-	LIBUSB_ENDPOINT_OUT = 0x00
 };
 
 typedef struct libusb_device libusb_device;
