@@ -90,6 +90,25 @@ enum libusb_request_recipient {
 	LIBUSB_RECIPIENT_OTHER = 0x03,
 };
 
+enum libusb_error {
+	LIBUSB_SUCCESS = 0,
+	LIBUSB_ERROR_IO = -1,
+	LIBUSB_ERROR_INVALID_PARAM = -2,
+	LIBUSB_ERROR_ACCESS = -3,
+	LIBUSB_ERROR_NO_DEVICE = -4,
+	LIBUSB_ERROR_NOT_FOUND = -5,
+	LIBUSB_ERROR_BUSY = -6,
+	LIBUSB_ERROR_TIMEOUT = -7,
+	LIBUSB_ERROR_OVERFLOW = -8,
+	LIBUSB_ERROR_PIPE = -9,
+	LIBUSB_ERROR_INTERRUPTED = -10,
+	LIBUSB_ERROR_NO_MEM = -11,
+	LIBUSB_ERROR_NOT_SUPPORTED = -12,
+	LIBUSB_ERROR_OTHER = -99,
+};
+
+#define LIBUSB_ERROR_COUNT 14
+
 typedef struct libusb_device_descriptor {
 	uint8_t bLength;
 	uint8_t bDescriptorType;
@@ -167,6 +186,11 @@ extern int (*sceUsbdGetDeviceDescriptor)(libusb_device *device, libusb_device_de
 
 extern int (*sceUsbdOpen)(libusb_device *dev, libusb_device_handle **devh);
 extern libusb_device_handle *(*sceUsbdOpenDeviceWithVidPid)(unsigned short vendorId, unsigned short productId);
+
+extern int (*sceUsbdSetInterfaceAltSetting)(libusb_device_handle *dev, int interface_number, int alternate_setting);
+extern int (*sceUsbdClearHalt)(libusb_device_handle *devh, unsigned char endpoint);
+extern int (*sceUsbdResetDevice)(libusb_device_handle *devh);
+extern int (*sceUsbdCheckConnected)(libusb_device_handle *devh);
 
 extern int (*sceUsbdControlTransfer)(libusb_device_handle *devh, uint8_t bmRequestType, uint8_t bRequest, uint16_t wValue, uint16_t wIndex, unsigned char *data, uint16_t wLength, unsigned int timeout);
 extern int (*sceUsbdBulkTransfer)(struct libusb_device_handle *devh, unsigned char endpoint, unsigned char *data, int length, int *transferred, unsigned int timeout);
