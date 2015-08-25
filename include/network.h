@@ -17,8 +17,8 @@ struct in_addr {
 };
 
 struct sockaddr_in {
-	unsigned short sin_len;
-	short sin_family;
+	unsigned char length;
+	unsigned char sin_family;
 	unsigned short sin_port;
 	struct in_addr sin_addr;
 	unsigned short sin_vport;
@@ -26,8 +26,8 @@ struct sockaddr_in {
 };
 
 struct sockaddr {
-	unsigned short sin_len;
-	unsigned short sa_family;
+	unsigned char length;
+	unsigned char sa_family;
 	char sa_data[14];
 };
 
