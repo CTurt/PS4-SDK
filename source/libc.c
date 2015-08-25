@@ -30,6 +30,15 @@ struct tm *(*localtime)(const time_t *timep);
 struct tm *(*localtime_r)(const time_t *timep, struct tm *result);
 time_t (*mktime)(struct tm *tm);
 
+DIR *(*opendir)(const char *filename);
+struct dirent *(*readdir)(DIR *dirp);
+int (*readdir_r)(DIR *dirp, struct dirent *entry, struct dirent **result);
+long (*telldir)(const DIR *dirp);
+void (*seekdir)(DIR *dirp, long loc);
+void (*rewinddir)(DIR *dirp);
+int (*closedir)(DIR *dirp);
+int (*dirfd)(DIR *dirp);
+
 
 void initLibc(void) {
 	int libc;
@@ -62,4 +71,13 @@ void initLibc(void) {
 	RESOLVE(libc, localtime);
 	RESOLVE(libc, localtime_r);
 	RESOLVE(libc, mktime);
+
+	RESOLVE(libc, opendir);
+	RESOLVE(libc, readdir);
+	RESOLVE(libc, readdir_r);
+	RESOLVE(libc, telldir);
+	RESOLVE(libc, seekdir);
+	RESOLVE(libc, rewinddir);
+	RESOLVE(libc, closedir);
+	RESOLVE(libc, dirfd);
 }
