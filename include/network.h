@@ -22,7 +22,7 @@ struct sockaddr_in {
 	unsigned short sin_port;
 	struct in_addr sin_addr;
 	unsigned short sin_vport;
-	char sin_zero[8];
+	char sin_zero[6];
 };
 
 struct sockaddr {
