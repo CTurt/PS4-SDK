@@ -3,7 +3,7 @@
 #include "types.h"
 #include "file.h"
 
-typedef void *DIR;
+typedef struct DIR DIR;
 
 extern void *(*malloc)(size_t size);
 extern void (*free)(void *ptr);
