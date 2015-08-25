@@ -1,6 +1,15 @@
 # PS4 SDK
 An open source PlayStation 4 SDK.
 
+## Building and installing
+Just run `make` on the `PS4-SDK` directory to build the library.
+
+Then create an environment variable called, `PS4SDK` which points to the base directory of the repository, using the Unix path style; for example:
+
+    /C/Users/Chris/Documents/GitHub/PS4-SDK
+
+You must make sure that your compiler supports the System V AMD64 ABI calling convention. PS4-SDK relies on this for compatibility with Sony's functions and system calls.
+
 ## Design
 At the moment, it is primarily focused on the kernel. For example, [all semaphore system calls have been implemented](https://github.com/CTurt/PS4-SDK/blob/master/source/semaphore.c), from 549 to 556.
 
@@ -11,11 +20,17 @@ The [hello](https://github.com/CTurt/PS4-SDK/blob/master/examples/hello/source/m
 ## Support
 Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics, or receiving controller input, it is a solid foundation which will be improved upon over time.
 
-## Building and installing
-Just run `make` on the `PS4-SDK` directory to build the library.
+## Examples
+`filesystem/directories` - Read all directories and files within a directory, and send names over a socket
 
-Then create an environment variable called, `PS4SDK` which points to the base directory of the repository, using the Unix path style; for example:
+`filesystem/files` - Read a file, and send contents over a socket
 
-    /C/Users/Chris/Documents/GitHub/PS4-SDK
+`hello` - Load libc module and perform `getpid` system call
 
-You must make sure that your compiler supports the System V AMD64 ABI calling convention. PS4-SDK relies on this for compatibility with Sony's functions and system calls.
+`sockets` - Send a message over a TCP socket
+
+`threads` - Create and wait for a thread to increment a variable
+
+`usb/list_devices` - List information about all USB devices connected
+
+`usb/usb_storage` - Read raw image from a USB flash drive
