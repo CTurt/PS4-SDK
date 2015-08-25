@@ -17,10 +17,11 @@ struct in_addr {
 };
 
 struct sockaddr_in {
+	unsigned short sin_len;
 	short sin_family;
 	unsigned short sin_port;
 	struct in_addr sin_addr;
-	char sin_zero[8];
+	char sin_zero[6];
 };
 
 struct sockaddr {

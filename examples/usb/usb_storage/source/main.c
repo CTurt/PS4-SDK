@@ -1,37 +1,3 @@
-/*
-Gives the following output, when a USB flash drive is inserted into slot 0
-
-sceUsbdInit 0
-Device list count 1
-Device 0
-  Get device descriptor: 0
-  Device Class: 0x00
-  Vendor ID: 0x0930
-  Product ID: 0x6533
-  Number of possible configurations: 1
-
-  Get config descriptor: 0
-  Number of interfaces: 1
-
-  Interface 0
-    Number of alternate settings: 1
-    Interface 0
-      Interface Number: 0
-      Number of endpoints: 3
-      Endpoint 0
-        Descriptor Type: 0x05
-        EP Address: 0x81
-        EP Attributes: 0x02
-      Endpoint 1
-        Descriptor Type: 0x05
-        EP Address: 0x02
-        EP Attributes: 0x02
-      Endpoint 2
-        Descriptor Type: 0x05
-        EP Address: 0x83
-        EP Attributes: 0x03
-*/
-
 #include "ps4.h"
 
 int netdbg_sock;
@@ -367,7 +333,8 @@ int _main(void) {
 
 	// Init netdebug
 	struct sockaddr_in server;
-	server.sin_family = sceNetHtons(AF_INET);
+	server.sin_len = sizeof(server);
+	server.sin_family = AF_INET;
 	server.sin_addr.s_addr = IP(192, 168, 0, 4);
 	server.sin_port = sceNetHtons(9023);
 	memset(server.sin_zero, 0, sizeof(server.sin_zero));
