@@ -26,7 +26,7 @@ Whilst the SDK isn't capable of most basic functionality yet, such as displaying
 `threads` - Create and wait for a thread to increment a variable
 
 ### Filesystem
-`directories` - Read all directories and files within a directory
+`directories` - List the contents of a directory
 
 `files` - Read a file's size, and its contents
 
