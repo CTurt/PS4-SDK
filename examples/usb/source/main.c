@@ -1,12 +1,35 @@
 /*
 Gives the following output, when a USB flash drive is inserted into slot 0
 
-Init 0
-Get device list 1
-Get descriptor 0
-Vendor: 2352, Product: 25907
-Open 0x8803c8220
-Transfer 0x802400ff, length 0
+sceUsbdInit 0
+Device list count 1
+Device 0
+  Get device descriptor: 0
+  Device Class: 0x00
+  Vendor ID: 0x0930
+  Product ID: 0x6533
+  Number of possible configurations: 1
+
+  Get config descriptor: 0
+  Number of interfaces: 1
+
+  Interface 0
+    Number of alternate settings: 1
+    Interface 0
+      Interface Number: 0
+      Number of endpoints: 3
+      Endpoint 0
+        Descriptor Type: 0x05
+        EP Address: 0x81
+        EP Attributes: 0x02
+      Endpoint 1
+        Descriptor Type: 0x05
+        EP Address: 0x02
+        EP Attributes: 0x02
+      Endpoint 2
+        Descriptor Type: 0x05
+        EP Address: 0x83
+        EP Attributes: 0x03
 */
 
 #include "ps4.h"
@@ -42,7 +65,8 @@ int _main(void) {
 	const struct libusb_interface *inter;
 	const struct libusb_interface_descriptor *interdesc;
 	const struct libusb_endpoint_descriptor *epdesc;
-
+	libusb_device_handle *handle;
+	
 	int ret = sceUsbdInit();
 	debug("sceUsbdInit %d\n", ret);
 
@@ -51,7 +75,6 @@ int _main(void) {
 
 	int i;
 	for(i = 0; i < count; i++) {
-
 		debug("Device %i\n", i);
 
 		ret = sceUsbdGetDeviceDescriptor(list[i], &desc);
@@ -62,6 +85,9 @@ int _main(void) {
 		debug("  Product ID: 0x%04X\n", desc.idProduct);
 		debug("  Number of possible configurations: %i\n", desc.bNumConfigurations);
 
+		//ret = sceUsbdOpen(list[i], &handle);
+		//handle = sceUsbdOpenDeviceWithVidPid(vendor, product);
+		
 		ret = sceUsbdGetConfigDescriptor(list[i], 0, &config);
 		debug("\n  Get config descriptor: %d\n", ret);
 
