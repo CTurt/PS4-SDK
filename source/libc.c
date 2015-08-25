@@ -4,6 +4,8 @@
 
 void *(*malloc)(size_t size);
 void (*free)(void *ptr);
+void *(*calloc)(size_t num, size_t size);
+void *(*realloc)(void* ptr, size_t size);
 void *(*memset)(void *destination, int value, size_t num);
 void *(*memcpy)(void *destination, const void *source, size_t num);
 char *(*strcpy)(char *destination, const char *source);
@@ -35,6 +37,8 @@ void initLibc(void) {
 
 	RESOLVE(libc, malloc);
 	RESOLVE(libc, free);
+	RESOLVE(libc, calloc);
+	RESOLVE(libc, realloc);
 	RESOLVE(libc, memset);
 	RESOLVE(libc, memcpy);
 	RESOLVE(libc, strcpy);
