@@ -1,6 +1,9 @@
 #pragma once
 
 #include "types.h"
+#include "file.h"
+
+typedef void *DIR;
 
 extern void *(*malloc)(size_t size);
 extern void (*free)(void *ptr);
@@ -29,5 +32,14 @@ extern struct tm *(*gmtime_r)(const time_t *timep, struct tm *result);
 extern struct tm *(*localtime)(const time_t *timep);
 extern struct tm *(*localtime_r)(const time_t *timep, struct tm *result);
 extern time_t (*mktime)(struct tm *tm);
+
+extern DIR *(*opendir)(const char *filename);
+extern struct dirent *(*readdir)(DIR *dirp);
+extern int (*readdir_r)(DIR *dirp, struct dirent *entry, struct dirent **result);
+extern long (*telldir)(const DIR *dirp);
+extern void (*seekdir)(DIR *dirp, long loc);
+extern void (*rewinddir)(DIR *dirp);
+extern int (*closedir)(DIR *dirp);
+extern int (*dirfd)(DIR *dirp);
 
 void initLibc(void);
