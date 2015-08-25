@@ -26,8 +26,9 @@ struct sockaddr_in {
 };
 
 struct sockaddr {
+	unsigned short sin_len;
 	unsigned short sa_family;
-	char sa_data[14];
+	char sa_data[12];
 };
 
 extern int (*sceNetSocket)(const char *, int, int, int);
