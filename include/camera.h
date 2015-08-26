@@ -12,7 +12,8 @@ typedef struct SceCameraStartParameter {
 
 typedef struct SceCameraFrameData {
 	uint32_t size; //0x0  <- set to  size< 0xb1+0x158=0x209 (521) it is a check hardcoded in libSceCamera.sprx
-	uint32_t unknown[129]; //0x4 <-- test content capturing frames. I suppose size 520 it the worst case to pass the check
+	uint32_t unknown1;
+	uint32_t unknown2[128]; //0x4 <-- test content capturing frames. I suppose size 520 it the worst case to pass the check
 } SceCameraFrameData;
 
 typedef struct SceCameraDeviceInfo {
@@ -27,7 +28,7 @@ typedef struct SceCameraConfig {
 	uint32_t unknown[100]; //0x4
 } SceCameraConfig;
 
-extern int (*sceCameraOpen)(int userid, int type, int index);
+extern int (*sceCameraOpen)(int userid, int type, int index, void *);
 extern int (*sceCameraClose)(int handle);
 extern int (*sceCameraIsAttached)(int index);
 extern int (*sceCameraGetFrameData)(int handle, SceCameraFrameData *frame);
