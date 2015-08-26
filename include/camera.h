@@ -28,7 +28,7 @@ typedef struct SceCameraConfig {
 	uint32_t unknown[100]; //0x4
 } SceCameraConfig;
 
-extern int (*sceCameraOpen)(int userid, int type, int index);
+extern int (*sceCameraOpen)(int userid, int type, int index, void *);
 extern int (*sceCameraClose)(int handle);
 extern int (*sceCameraIsAttached)(int index);
 extern int (*sceCameraGetFrameData)(int handle, SceCameraFrameData *frame);
