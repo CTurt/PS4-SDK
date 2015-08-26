@@ -27,11 +27,6 @@ int unlink(const char *pathname)
 	return syscall(10, pathname);
 }
 
-int stat(const char *path, struct stat *sb)
-{
-	return syscall(38, path, sb);
-}
-
 int rename(const char *oldpath, const char *newpath)
 {
 	return syscall(128, oldpath, newpath);
@@ -45,6 +40,11 @@ int mkdir(const char *pathname, mode_t mode)
 int rmdir(const char *path)
 {
 	return syscall(137, path);
+}
+
+int stat(const char *path, struct stat *sb)
+{
+	return syscall(188, path, sb);
 }
 
 int fstat(int fd, struct stat *sb)
