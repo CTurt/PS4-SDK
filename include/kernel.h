@@ -13,4 +13,6 @@ extern int (*sceKernelGettimeofday)(SceKernelTimeval *tp);
 extern uint64_t (*sceKernelGetProcessTime)(void);
 extern int (*sceKernelGetCurrentCpu)(void);
 
+int kill(int pid, int signum);
+
 void initKernel(void);
