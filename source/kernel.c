@@ -1,4 +1,5 @@
 #include "module.h"
+#include "syscall.h"
 
 #include "kernel.h"
 
