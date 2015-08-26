@@ -2,7 +2,7 @@
 
 #include "camera.h"
 
-int (*sceCameraOpen)(int userid, int type, int index);
+int (*sceCameraOpen)(int userid, int type, int index, void *);
 int (*sceCameraClose)(int handle);
 int (*sceCameraIsAttached)(int index);
 int (*sceCameraGetFrameData)(int handle, SceCameraFrameData *frame);
