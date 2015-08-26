@@ -3,7 +3,7 @@
 #include "pad.h"
 
 int (*scePadInit)(void);
-int (*scePadOpen)(int, int, int, void *);
+int (*scePadOpen)(int userID, int, int, void *);
 int (*scePadClose)(int handle);
 int (*scePadRead)(int handle, void *data, int count);
 
