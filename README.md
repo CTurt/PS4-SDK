@@ -25,6 +25,8 @@ Whilst the SDK isn't capable of most basic functionality yet, such as displaying
 
 `threads` - Create and wait for a thread to increment a variable
 
+`camera` - Initialise the PlayStation Camera and capture 10 frames
+
 ### Filesystem
 `directories` - List the contents of a directory
 
