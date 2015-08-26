@@ -27,6 +27,10 @@ Whilst the SDK isn't capable of most basic functionality yet, such as displaying
 
 `camera` - Initialise the PlayStation Camera and capture 10 frames
 
+`pad` - Read controller input (not finished)
+
+`modules` - Load and dump a module
+
 ### Filesystem
 `directories` - List the contents of a directory
 
