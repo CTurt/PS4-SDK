@@ -17,6 +17,7 @@
 #include "unknown.h"
 #include "usb.h"
 #include "camera.h"
+#include "pad.h"
 
 #define TEXT (void *)TEXT_ADDRESS
 #define DATA (void *)DATA_ADDRESS
