@@ -14,4 +14,4 @@ struct otherMemoryRegionInfo {
 };
 
 int getMemoryInfo(void *address, struct memoryRegionInfo *destination);
-int getOtherMemoryInfo(void *address, struct otherMemoryRegionInfo *destination);
+int getOtherMemoryInfo(void *address, int nextMatchIfUnmapped, struct otherMemoryRegionInfo *destination);
