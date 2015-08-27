@@ -2,6 +2,13 @@
 
 #include "types.h"
 
+#define PROT_CPU_READ 1
+#define PROT_CPU_WRITE 2
+#define PROT_CPU_EXEC 4
+#define PROT_GPU_EXEC 8
+#define PROT_GPU_READ 16
+#define PROT_GPU_WRITE 32
+
 typedef struct timeval SceKernelTimeval;
 
 extern int (*sceKernelAllocateDirectMemory)(off_t searchStart, off_t searchEnd, size_t length, size_t alignment, int type, off_t *physicalAddressDestination);
