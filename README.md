@@ -16,7 +16,7 @@ At the moment, it is primarily focused on the kernel. For example, [all semaphor
 However, using function pointers and the `RESOLVE` macro, we can call functions from other modules. For example, [the socket functions](https://github.com/CTurt/PS4-SDK/blob/master/source/network.c) from `libSceNet.sprx`.
 
 ## Support
-Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics, or receiving controller input, it is a solid foundation which will be improved upon over time.
+Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics (though we can render to an HTML5 canvas), or receiving controller input, it is a solid foundation which will be improved upon over time.
 
 ## Examples
 `hello` - Load libc module and perform `getpid` system call
@@ -26,6 +26,8 @@ Whilst the SDK isn't capable of most basic functionality yet, such as displaying
 `modules` - Load and dump a module
 
 `threads` - Create and wait for a thread to increment a variable
+
+`canvas` - Render to an HTML5 canvas
 
 `camera` - Initialise the PlayStation Camera and capture 10 frames
 
