@@ -18,7 +18,7 @@ However, using function pointers and the `RESOLVE` macro, we can call functions 
 ## Support
 Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics, or receiving controller input, there are workarounds: rendering to an HTML5 canvas, and using third party USB controllers, or a DS/PSP wirelessly for example.
 
-The SDK is currently in a state where projects like an FTP server, or mini Pong game could be developed.
+The SDK is currently in a state where projects like an FTP server, or [a mini Pong game](https://github.com/CTurt/PS4-Pong) could be developed.
 
 ## Examples
 `hello` - Load `libc` module and perform `getpid` system call
