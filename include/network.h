@@ -12,6 +12,9 @@
 #define SOCK_STREAM 1
 #define SOCK_DGRAM 2
 
+#define SOL_SOCKET 0xffff
+#define SO_NBIO 0x1200
+
 struct in_addr {
 	unsigned long s_addr;
 };
@@ -31,6 +34,8 @@ struct sockaddr {
 	char sa_data[14];
 };
 
+typedef unsigned int socklen_t;
+
 extern int (*sceNetSocket)(const char *, int, int, int);
 extern int (*sceNetSocketClose)(int);
 extern int (*sceNetConnect)(int, struct sockaddr *, int);
@@ -41,6 +46,8 @@ extern int (*sceNetAccept)(int, struct sockaddr *, unsigned int *);
 extern int (*sceNetRecv)(int, void *, size_t, int);
 
 extern int (*sceNetGetsockname)(int, struct sockaddr *, unsigned int *);
+extern int (*sceNetGetsockopt)(int s, int level, int optname, void *restrict optval, socklen_t *restrict optlen);
+extern int (*sceNetSetsockopt)(int s, int level, int optname, const void *optval, socklen_t optlen);
 
 extern const char (*sceNetInetNtop)(int af, const void *src, char *dst, int size);
 extern int (*sceNetInetPton)(int af, const char *src, void *dst);
@@ -51,6 +58,5 @@ extern uint16_t (*sceNetHtons)(uint16_t host16);
 extern uint64_t (*sceNetNtohll)(uint64_t net64);
 extern uint32_t (*sceNetNtohl)(uint32_t net32);
 extern uint16_t (*sceNetNtohs)(uint16_t net16);
-
 
 void initNetwork(void);
