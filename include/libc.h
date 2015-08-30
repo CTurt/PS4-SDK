@@ -12,6 +12,7 @@ extern void *(*realloc)(void* ptr, size_t size);
 extern void *(*memset)(void *destination, int value, size_t num);
 extern void *(*memcpy)(void *destination, const void *source, size_t num);
 extern char *(*strcpy)(char *destination, const char *source);
+extern char *(*strncpy)(char *__restrict, const char *__restrict, size_t);
 extern char *(*strcat)(char *dest, const char *src);
 extern char *(*strncat)(char *dest, const char *src, size_t n);
 extern size_t (*strlen)(const char *s);

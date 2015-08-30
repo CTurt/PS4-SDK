@@ -10,6 +10,7 @@ int (*sceNetBind)(int, struct sockaddr *, int);
 int (*sceNetListen)(int, int);
 int (*sceNetAccept)(int, struct sockaddr *, unsigned int *);
 int (*sceNetRecv)(int, void *, size_t, int);
+int (*sceNetSocketAbort)(int , int );
 
 int (*sceNetGetsockname)(int, struct sockaddr *, unsigned int *);
 int (*sceNetGetsockopt)(int s, int level, int optname, void *restrict optval, socklen_t *restrict optlen);
@@ -37,6 +38,8 @@ void initNetwork(void) {
 	RESOLVE(libNet, sceNetListen);
 	RESOLVE(libNet, sceNetAccept);
 	RESOLVE(libNet, sceNetRecv);
+	RESOLVE(libNet, sceNetSocketAbort);
+	
 
 	RESOLVE(libNet, sceNetGetsockname);
 	RESOLVE(libNet, sceNetGetsockopt);
