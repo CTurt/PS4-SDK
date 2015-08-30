@@ -15,6 +15,9 @@
 #define SOL_SOCKET 0xffff
 #define SO_NBIO 0x1200
 
+#define MSG_DONTWAIT 0x80
+#define MSG_WAITALL 0x40
+
 struct in_addr {
 	unsigned long s_addr;
 };
@@ -44,6 +47,7 @@ extern int (*sceNetBind)(int, struct sockaddr *, int);
 extern int (*sceNetListen)(int, int);
 extern int (*sceNetAccept)(int, struct sockaddr *, unsigned int *);
 extern int (*sceNetRecv)(int, void *, size_t, int);
+extern int (*sceNetSocketAbort)(int , int );
 
 extern int (*sceNetGetsockname)(int, struct sockaddr *, unsigned int *);
 extern int (*sceNetGetsockopt)(int s, int level, int optname, void *restrict optval, socklen_t *restrict optlen);

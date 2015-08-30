@@ -9,6 +9,7 @@ void *(*realloc)(void* ptr, size_t size);
 void *(*memset)(void *destination, int value, size_t num);
 void *(*memcpy)(void *destination, const void *source, size_t num);
 char *(*strcpy)(char *destination, const char *source);
+char *(*strncpy)(char *__restrict, const char *__restrict, size_t);
 char *(*strcat)(char *dest, const char *src);
 char *(*strncat)(char *dest, const char *src, size_t n);
 size_t (*strlen)(const char *s);
@@ -51,6 +52,7 @@ void initLibc(void) {
 	RESOLVE(libc, memset);
 	RESOLVE(libc, memcpy);
 	RESOLVE(libc, strcpy);
+	RESOLVE(libc, strncpy);
 	RESOLVE(libc, strcat);
 	RESOLVE(libc, strncat);
 	RESOLVE(libc, strlen);
