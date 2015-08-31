@@ -12,6 +12,7 @@ extern void *(*realloc)(void* ptr, size_t size);
 extern void *(*memset)(void *destination, int value, size_t num);
 extern void *(*memcpy)(void *destination, const void *source, size_t num);
 extern char *(*strcpy)(char *destination, const char *source);
+extern char *(*strncpy)(char *destination, const char *source, size_t num);
 extern char *(*strcat)(char *dest, const char *src);
 extern char *(*strncat)(char *dest, const char *src, size_t n);
 extern size_t (*strlen)(const char *s);
@@ -22,6 +23,9 @@ extern int (*snprintf)(char *str, size_t size, const char *format, ...);
 extern int (*sscanf)(const char *str, const char *format, ...);
 extern char *(*strchr)(const char *s, int c);
 extern char *(*strrchr)(const char *s, int c);
+
+extern void (*srand)(unsigned int seed);
+extern int (*rand)(void);
 
 extern char *(*asctime)(const struct tm *tm);
 extern char *(*asctime_r)(const struct tm *tm, char *buf);
