@@ -9,6 +9,7 @@ void *(*realloc)(void* ptr, size_t size);
 void *(*memset)(void *destination, int value, size_t num);
 void *(*memcpy)(void *destination, const void *source, size_t num);
 char *(*strcpy)(char *destination, const char *source);
+char *(*strncpy)(char *destination, const char *source, size_t num);
 char *(*strcat)(char *dest, const char *src);
 char *(*strncat)(char *dest, const char *src, size_t n);
 size_t (*strlen)(const char *s);
@@ -19,6 +20,9 @@ int (*snprintf)(char *str, size_t size, const char *format, ...);
 int (*sscanf)(const char *str, const char *format, ...);
 char *(*strchr)(const char *s, int c);
 char *(*strrchr)(const char *s, int c);
+
+void (*srand)(unsigned int seed);
+int (*rand)(void);
 
 char *(*asctime)(const struct tm *tm);
 char *(*asctime_r)(const struct tm *tm, char *buf);
@@ -51,6 +55,7 @@ void initLibc(void) {
 	RESOLVE(libc, memset);
 	RESOLVE(libc, memcpy);
 	RESOLVE(libc, strcpy);
+	RESOLVE(libc, strncpy);
 	RESOLVE(libc, strcat);
 	RESOLVE(libc, strncat);
 	RESOLVE(libc, strlen);
@@ -61,7 +66,10 @@ void initLibc(void) {
 	RESOLVE(libc, sscanf);
 	RESOLVE(libc, strchr);
 	RESOLVE(libc, strrchr);
-
+	
+	RESOLVE(libc, srand);
+	RESOLVE(libc, rand);
+	
 	RESOLVE(libc, asctime);
 	RESOLVE(libc, asctime_r);
 	RESOLVE(libc, ctime);
