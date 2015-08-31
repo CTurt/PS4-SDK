@@ -11,6 +11,7 @@ int (*sceCameraStop)(int handle);
 int (*sceCameraGetDeviceInfo)(int handle, SceCameraDeviceInfo *info);
 int (*sceCameraGetDeviceConfig)(int handle, SceCameraConfig *config);
 int (*sceCameraGetConfig)(int handle, SceCameraConfig *config);
+int (*sceCameraSetConfig)(int handle, SceCameraConfig *config);
 
 void initCamera(void) {
 	int libCamera;
@@ -25,4 +26,6 @@ void initCamera(void) {
 	RESOLVE(libCamera, sceCameraGetDeviceInfo);
 	RESOLVE(libCamera, sceCameraGetDeviceConfig);
 	RESOLVE(libCamera, sceCameraGetConfig);
+	RESOLVE(libCamera, sceCameraSetConfig);
+	
 }
