@@ -2,6 +2,11 @@
 
 #include "types.h"
 
+enum {
+	SEEK_SET,
+	SEEK_CUR,
+	SEEK_END
+};
 /* Grabbed from FreeBSD/sys/sys/stat.h */
 
 #define O_RDONLY  0x0000
