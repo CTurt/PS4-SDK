@@ -56,6 +56,8 @@ void *canvasRenderer(void *arg) {
 
 int _main(void) {
 	// Init and resolve libraries
+	initKernel();
+	
 	initPthread();
 	
 	

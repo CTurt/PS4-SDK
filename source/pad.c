@@ -1,3 +1,4 @@
+#include "kernel.h"
 #include "module.h"
 
 #include "pad.h"
@@ -9,8 +10,7 @@ int (*scePadRead)(int handle, void *data, int count);
 int (*scePadReadState)(int handle, void *data);
 
 void initPad(void) {
-	int libPad;
-	loadModule("libScePad.sprx", &libPad);
+	int libPad = sceKernelLoadStartModule("libScePad.sprx", 0, NULL, 0, 0, 0);
 	
 	RESOLVE(libPad, scePadInit);
 	RESOLVE(libPad, scePadOpen);

@@ -10,6 +10,8 @@ void *thread_func(void *arg) {
 
 int _main(void) {
 	// Init and resolve libraries
+	initKernel();
+	
 	initLibc();
 	initPthread();
 

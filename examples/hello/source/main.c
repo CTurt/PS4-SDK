@@ -2,6 +2,8 @@
 
 int _main(void) {
 	// Init and resolve libraries
+	initKernel();
+	
 	initLibc();
 
 

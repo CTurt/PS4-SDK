@@ -1,3 +1,4 @@
+#include "kernel.h"
 #include "module.h"
 
 #include "network.h"
@@ -27,9 +28,8 @@ uint32_t (*sceNetNtohl)(uint32_t net32);
 uint16_t (*sceNetNtohs)(uint16_t net16);
 
 void initNetwork(void) {
-	int libNet;
-	loadModule("libSceNet.sprx", &libNet);
-
+	int libNet = sceKernelLoadStartModule("libSceNet.sprx", 0, NULL, 0, 0, 0);
+	
 	RESOLVE(libNet, sceNetSocket);
 	RESOLVE(libNet, sceNetSocketClose);
 	RESOLVE(libNet, sceNetConnect);

@@ -1,3 +1,4 @@
+#include "kernel.h"
 #include "module.h"
 
 #include "pthread.h"
@@ -17,8 +18,7 @@ int (*scePthreadMutexTrylock)(ScePthreadMutex *mutex);
 int (*scePthreadMutexTimedlock)(ScePthreadMutex *mutex, SceKernelUseconds usec);
 int (*scePthreadMutexUnlock)(ScePthreadMutex *mutex);
 
-void initPthread(void)
-{
+void initPthread(void) {
 	int libkernel;
 	loadModule("libkernel.sprx", &libkernel);
 

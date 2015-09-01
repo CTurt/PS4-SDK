@@ -43,6 +43,8 @@ Device 0
 
 int _main(void) {
 	// Load modules
+	initKernel();
+	
 	initLibc();
 	initNetwork();
 	initUsb();

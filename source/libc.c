@@ -1,3 +1,4 @@
+#include "kernel.h"
 #include "module.h"
 
 #include "libc.h"
@@ -45,9 +46,8 @@ int (*dirfd)(DIR *dirp);
 
 
 void initLibc(void) {
-	int libc;
-	loadModule("libSceLibcInternal.sprx", &libc);
-
+	int libc = sceKernelLoadStartModule("libSceLibcInternal.sprx", 0, NULL, 0, 0, 0);
+	
 	RESOLVE(libc, malloc);
 	RESOLVE(libc, free);
 	RESOLVE(libc, calloc);

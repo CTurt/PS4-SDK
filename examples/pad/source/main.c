@@ -6,6 +6,8 @@ unsigned char data[512];
 
 int _main(void) {
 	// Init and resolve libraries
+	initKernel();
+	
 	initLibc();
 	initNetwork();
 	initPad();
@@ -26,7 +28,7 @@ int _main(void) {
 	sceNetConnect(sock, (struct sockaddr *)&server, sizeof(server));
 	
 	
-	// Browser /user/home/ to see all user IDs (in hex)
+	// Browse /user/home/ to see all user IDs (in hex)
 	int userID = 0x10000000;
 	
 	int pad = scePadOpen(userID, 0, 0, NULL);

@@ -1,6 +1,5 @@
 /*
  * PlayStation 4 Eye basic sample  
- * Comments from bigboss: You need load libSceCamera (ID 31) module before exec this code if not sceCameraIsAttached return 0 always and it must return 1.
  * If sceCameraIsAttached return 0 and you try to call sceCameraOpen you will received a invalid handle 0xFFFFFFFF... 
  * debug is using udp log: socat udp-recv:18194 stdout on your host
  * change your ip to receive udp logs in sceNetInetPton function
@@ -32,6 +31,8 @@
 
 int _main(void) {
 	// Init and resolve libraries
+	initKernel();
+	
 	initLibc();
 	initNetwork();
 	initCamera();
@@ -43,13 +44,13 @@ int _main(void) {
 	struct sockaddr_in server;
 
 	//udp log to port 18194
-	server.sin_len = 16;
-	server.sin_family = 2;
+	server.sin_len = sizof(server);
+	server.sin_family = AF_INET;
 	sceNetInetPton(2, "192.168.1.3", &server.sin_addr);
 	server.sin_port = sceNetHtons(18194);
 	memset(server.sin_zero, 0, sizeof(server.sin_zero));
 
-	int sock = sceNetSocket(socketName, 2, 2, 0);
+	int sock = sceNetSocket(socketName, AF_INET, SOCK_DGRAM, 0);
 	sceNetConnect(sock, (struct sockaddr *)&server, sizeof(server));
 
 	debug(sock, "debugnet Initialized\n");
@@ -59,13 +60,7 @@ int _main(void) {
 	int count;
 	int index;
 	int modules[256];
-	//i used this to check if module was loaded and it was but it need to be loaded before exec this sample
-	/*syscall(592, modules,256, &count);
-	for(index = 0; index < count; index++) {
-		
-		debug(sock, "%d - %08x (%d)\n",index,modules[index],modules[index]);
-		
-	}*/
+	
 	//First we check if camera is attached it must return 1 if not we can't follow and return
 	ret = sceCameraIsAttached(0);
 	if(!ret)

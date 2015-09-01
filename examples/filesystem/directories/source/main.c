@@ -17,6 +17,8 @@ char *entryName(int entryType) {
 
 int _main(void) {
 	// Init and resolve libraries
+	initKernel();
+	
 	initLibc();
 	initNetwork();
 	
