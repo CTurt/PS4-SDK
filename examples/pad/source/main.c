@@ -1,6 +1,13 @@
-// Can't seem to get data to change
+// Can't seem to get data to update, stick X and Y are always at 128
 
 #include "ps4.h"
+
+#define debug(sock, format, ...)\
+	do {\
+		char buffer[512];\
+		int size = sprintf(buffer, format, ##__VA_ARGS__);\
+		sceNetSend(sock, buffer, size, 0);\
+	} while(0)
 
 unsigned char data[512];
 
@@ -10,6 +17,16 @@ int _main(void) {
 	
 	initLibc();
 	initNetwork();
+	
+	
+	// Get id of already loaded pad module
+	int padModule;
+	loadModule("libScePad.sprx", &padModule);
+	
+	// Unload it
+	unloadModule(padModule);
+	
+	// Start fresh
 	initPad();
 	
 	
@@ -35,7 +52,12 @@ int _main(void) {
 	
 	while(1) {
 		scePadReadState(pad, data);
-		sceNetSend(sock, data, 0x60, 0);
+		
+		debug(sock, "X: %d, Y: %d\n", data[4], data[5]);
+		
+		//sceNetSend(sock, data, 0x60, 0);
+		
+		sceKernelUsleep(1000000 / 60);
 	}
 	
 	
