@@ -1,3 +1,4 @@
+#include "kernel.h"
 #include "module.h"
 
 #include "camera.h"
@@ -14,8 +15,7 @@ int (*sceCameraGetConfig)(int handle, SceCameraConfig *config);
 int (*sceCameraSetConfig)(int handle, SceCameraConfig *config);
 
 void initCamera(void) {
-	int libCamera;
-	loadModule("libSceCamera.sprx", &libCamera);
+	int libCamera = sceKernelLoadStartModule("libSceCamera.sprx", 0, NULL, 0, 0, 0);
 	
 	RESOLVE(libCamera, sceCameraOpen);
 	RESOLVE(libCamera, sceCameraClose);

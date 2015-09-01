@@ -1,3 +1,4 @@
+#include "kernel.h"
 #include "module.h"
 
 #include "usb.h"
@@ -28,9 +29,8 @@ int (*sceUsbdGetConfigDescriptorByValue)(libusb_device *dev, uint8_t bConfigurat
 void (*sceUsbdFreeConfigDescriptor)(struct libusb_config_descriptor *config);
 
 void initUsb(void) {
-	int libUsb;
-	loadModule("libSceUsbd.sprx", &libUsb);
-
+	int libUsb = sceKernelLoadStartModule("libSceUsbd.sprx", 0, NULL, 0, 0, 0);
+	
 	RESOLVE(libUsb, sceUsbdInit);
 	RESOLVE(libUsb, sceUsbdExit);
 

@@ -14,8 +14,12 @@ struct moduleInfo {
 	unsigned int dataSize; // 0x120
 };
 
+extern int (*sceSysmoduleLoadModule)(int id);
+
 int getFunctionAddressByName(int loadedModuleID, char *name, void *destination);
 int getLoadedModules(int *destination, int max, int *count);
 int getModuleInfo(int loadedModuleID, struct moduleInfo *destination);
-int loadModule(char *name, int *idDestination);
+int loadModule(const char *name, int *idDestination);
 int unloadModule(int id);
+
+void initModule(void);

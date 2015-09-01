@@ -2,6 +2,8 @@
 
 int _main(void) {
 	// Init and resolve libraries
+	initKernel();
+	
 	initLibc();
 	initNetwork();
 	
@@ -21,8 +23,12 @@ int _main(void) {
 	sceNetConnect(sock, (struct sockaddr *)&server, sizeof(server));
 	
 	
-	// Load and dump pad module
 	int module;
+	
+	// Load and initialise
+	//module = sceKernelLoadStartModule("libScePad.sprx", 0, NULL, 0, 0, 0);
+	
+	// Just load for dumping
 	loadModule("libScePad.sprx", &module);
 	
 	struct moduleInfo m;
