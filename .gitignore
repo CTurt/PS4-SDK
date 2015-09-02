@@ -1,5 +1,7 @@
 libPS4/build/
 libPS4/libPS4.a
+libusbfatfs/build/
+libusbfatfs/libusbfatfs.a
 examples/*/build
 examples/*/*.bin
 examples/*/*.bat
