@@ -186,6 +186,7 @@ extern int (*sceUsbdGetDeviceDescriptor)(libusb_device *device, libusb_device_de
 
 extern int (*sceUsbdOpen)(libusb_device *dev, libusb_device_handle **devh);
 extern libusb_device_handle *(*sceUsbdOpenDeviceWithVidPid)(unsigned short vendorId, unsigned short productId);
+extern void (*sceUsbdClose)(libusb_device_handle *devh);
 
 extern int (*sceUsbdSetInterfaceAltSetting)(libusb_device_handle *dev, int interface_number, int alternate_setting);
 extern int (*sceUsbdClearHalt)(libusb_device_handle *devh, unsigned char endpoint);
