@@ -6,7 +6,7 @@ ODIR	:=	build
 SDIR	:=	source
 IDIR	:=	include
 LDIR	:=	lib
-CFLAGS	:=	-I$(IDIR) -O2 -fno-builtin -nostartfiles -nostdlib -Wall -masm=intel -march=btver2 -mtune=btver2 -m64 -mabi=sysv -mcmodel=large
+CFLAGS	:=	-I$(IDIR) -O2 -std=c11 -fno-builtin -nostartfiles -nostdlib -Wall -masm=intel -march=btver2 -mtune=btver2 -m64 -mabi=sysv -mcmodel=large
 SFLAGS	:=	-nostartfiles -nostdlib -march=btver2 -mtune=btver2
 CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)
