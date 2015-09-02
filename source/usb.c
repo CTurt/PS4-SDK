@@ -13,6 +13,7 @@ int (*sceUsbdGetDeviceDescriptor)(libusb_device *device, libusb_device_descripto
 
 int (*sceUsbdOpen)(libusb_device *dev, libusb_device_handle **devh);
 libusb_device_handle *(*sceUsbdOpenDeviceWithVidPid)(unsigned short vendorId, unsigned short productId);
+void (*sceUsbdClose)(libusb_device_handle *devh);
 
 int (*sceUsbdSetInterfaceAltSetting)(libusb_device_handle *dev, int interface_number, int alternate_setting);
 int (*sceUsbdClearHalt)(libusb_device_handle *devh, unsigned char endpoint);
@@ -30,7 +31,7 @@ void (*sceUsbdFreeConfigDescriptor)(struct libusb_config_descriptor *config);
 
 void initUsb(void) {
 	int libUsb = sceKernelLoadStartModule("libSceUsbd.sprx", 0, NULL, 0, 0, 0);
-	
+
 	RESOLVE(libUsb, sceUsbdInit);
 	RESOLVE(libUsb, sceUsbdExit);
 
@@ -41,6 +42,7 @@ void initUsb(void) {
 
 	RESOLVE(libUsb, sceUsbdOpen);
 	RESOLVE(libUsb, sceUsbdOpenDeviceWithVidPid);
+	RESOLVE(libUsb, sceUsbdClose);
 
 	RESOLVE(libUsb, sceUsbdSetInterfaceAltSetting);
 	RESOLVE(libUsb, sceUsbdClearHalt);
