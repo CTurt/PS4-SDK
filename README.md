@@ -2,7 +2,7 @@
 An open source PlayStation 4 SDK.
 
 ## Building and installing
-Just run `make` on the `PS4-SDK` directory to build the library.
+Just run `make` on the `libPS4` directory to build the library.
 
 Then create an environment variable called, `PS4SDK` which points to the base directory of the repository, using the Unix path style; for example:
 
@@ -18,7 +18,7 @@ However, using function pointers and the `RESOLVE` macro, we can call functions 
 ## Support
 Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics, or receiving controller input, there are workarounds: rendering to an HTML5 canvas, and using third party USB controllers, or a DS/PSP wirelessly for example.
 
-The SDK is currently in a state where projects like an FTP server, or [a mini Pong game](https://github.com/CTurt/PS4-Pong) could be developed.
+The SDK is currently in a state where projects like an FTP server, [a mini Pong game](https://github.com/CTurt/PS4-Pong), or [GameBoy emulator](https://github.com/CTurt/Cinoop) could be developed.
 
 ## Examples
 `hello` - Load `libc` module and perform `getpid` system call
