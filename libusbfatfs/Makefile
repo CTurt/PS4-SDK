@@ -1,4 +1,4 @@
-TARGET  := lib$(shell basename $(CURDIR)).a
+TARGET  := $(shell basename $(CURDIR)).a
 LIBPS4  := $(PS4SDK)/libPS4
 CC      := gcc
 AS      := gcc

@@ -113,7 +113,7 @@
 /                   Fixed creation of an entry with LFN fails on too many SFN collisions.
 /---------------------------------------------------------------------------*/
 
-#include "usbfatfs.h"		/* Declarations of FatFs API */
+#include "ff.h"		/* Declarations of FatFs API */
 #include "diskio.h"		/* Declarations of disk I/O functions */
 
 
