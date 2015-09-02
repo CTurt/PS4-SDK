@@ -44,7 +44,7 @@ int _main(void) {
 	struct sockaddr_in server;
 
 	//udp log to port 18194
-	server.sin_len = sizof(server);
+	server.sin_len = sizeof(server);
 	server.sin_family = AF_INET;
 	sceNetInetPton(2, "192.168.1.3", &server.sin_addr);
 	server.sin_port = sceNetHtons(18194);

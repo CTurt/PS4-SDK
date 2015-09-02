@@ -1,4 +1,5 @@
-build/
+libPS4/build/
+libPS4/libPS4.a
 examples/*/build
 examples/*/*.bin
 examples/*/*.bat
@@ -7,4 +8,3 @@ examples/*/*/build
 examples/*/*/*.bin
 examples/*/*/*.bat
 examples/*/*/*.exe
-libPS4-SDK.a
