@@ -4,9 +4,11 @@ libusbfatfs/build/
 libusbfatfs/libusbfatfs.a
 examples/*/build
 examples/*/*.bin
+examples/*/*.elf
 examples/*/*.bat
 examples/*/*.exe
 examples/*/*/build
 examples/*/*/*.bin
+examples/*/*/*.elf
 examples/*/*/*.bat
 examples/*/*/*.exe

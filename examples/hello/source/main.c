@@ -5,16 +5,12 @@ int _main(void) {
 	initKernel();
 	
 	initLibc();
-
-
-	// Copy some data
-	strcpy(DATA, "Hello!");
-
-
+	
+	
 	// Use getpid system call
 	int pid = syscall(20);
-
-
+	
+	
 	// Return to browser
 	return pid;
 }

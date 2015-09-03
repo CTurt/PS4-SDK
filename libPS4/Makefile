@@ -1,16 +1,16 @@
-CC		:=	gcc
-AS		:=	gcc
+CC		:=	clang
+AS		:=	clang
 AR		:=	ar
 OBJCOPY	:=	objcopy
 ODIR	:=	build
 SDIR	:=	source
 IDIR	:=	include
 LDIR	:=	lib
-CFLAGS	:=	-I$(IDIR) -O2 -std=c11 -fno-builtin -nostartfiles -nostdlib -Wall -masm=intel -march=btver2 -mtune=btver2 -m64 -mabi=sysv -mcmodel=large
-SFLAGS	:=	-nostartfiles -nostdlib -march=btver2 -mtune=btver2
+CFLAGS	:=	-I$(IDIR) -O2 -std=c11 -ffreestanding -fno-builtin -nostdlib -Wall -target x86_64-scei-ps4-elf -masm=intel -march=btver2 -mtune=btver2 -m64 -mcmodel=large
+SFLAGS	:=	-nostartfiles -nostdlib -target x86_64-scei-ps4-elf -march=btver2 -mtune=btver2
 CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)
-OBJS	:= $(patsubst $(SDIR)/%.c, build/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, build/%.o, $(SFILES))
+OBJS	:=	$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, $(ODIR)/%.o, $(SFILES))
 
 TARGET = $(shell basename $(CURDIR)).a
 
@@ -29,4 +29,4 @@ $(ODIR):
 .PHONY: clean
 
 clean:
-	rm -f $(TARGET) $(ODIR)/*.o
+	rm -rf $(ODIR) $(TARGET) $(ODIR)/*.o

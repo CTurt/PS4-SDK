@@ -1,4 +1,5 @@
 LIBPS4	:=	$(PS4SDK)/libPS4
+LIBUSBFATFS	:=	$(PS4SDK)/libusbfatfs
 
 CC		:=	clang
 AS		:=	clang
@@ -6,8 +7,8 @@ LD		:=	ld.gold
 OBJCOPY	:=	objcopy
 ODIR	:=	build
 SDIR	:=	source
-IDIRS	:=	-I$(LIBPS4)/include -I. -Iinclude
-LDIRS	:=	-L$(LIBPS4) -L. -Llib
+IDIRS	:=	-I$(LIBPS4)/include -I$(LIBUSBFATFS)/include -I. -Iinclude
+LDIRS	:=	-L$(LIBPS4) -L$(LIBUSBFATFS) -L. -Llib
 CFLAGS	:=	$(IDIRS) -O2 -fPIC -ffreestanding -fno-builtin -nostdlib -Wall -masm=intel -target x86_64-scei-ps4-elf -march=btver2 -mtune=btver2 -m64 -mcmodel=large
 SFLAGS	:=	-nostartfiles -nostdlib -target x86_64-scei-ps4-elf -march=btver2 -mtune=btver2
 LFLAGS	:=	$(LDIRS) -shared -fPIE
@@ -15,7 +16,7 @@ CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)
 OBJS	:=	$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, $(ODIR)/%.o, $(SFILES))
 
-LIBS	:=	-lPS4
+LIBS	:=	-lPS4 -lusbfatfs
 
 TARGET = $(shell basename $(CURDIR))
 

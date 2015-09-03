@@ -2,13 +2,17 @@
 An open source PlayStation 4 SDK.
 
 ## Building and installing
-Just run `make` on the `libPS4` directory to build the library.
+You will need [LLVM](http://llvm.org/releases/) version 3.7 or later for compiling, and `binutils` for linking (from [MinGW](http://www.mingw.org/) if you are on Windows).
+
+Clone this repository locally, or download and extract a ZIP of the repository [here](https://github.com/CTurt/PS4-SDK/archive/master.zip).
 
 Then create an environment variable called, `PS4SDK` which points to the base directory of the repository, using the Unix path style; for example:
 
     /C/Users/Chris/Documents/GitHub/PS4-SDK
 
-You must make sure that your compiler supports the System V AMD64 ABI calling convention. PS4-SDK relies on this for compatibility with Sony's functions and system calls.
+Build the libraries by running `make` on the `libPS4` and `libusbfatfs` directories.
+
+Finally, you can build examples by running `make` on them.
 
 ## Design
 At the moment, it is primarily focused on the kernel. For example, [all semaphore system calls have been implemented](https://github.com/CTurt/PS4-SDK/blob/master/source/semaphore.c), from 549 to 556.
@@ -44,3 +48,5 @@ The SDK is currently in a state where projects like an FTP server, [a mini Pong 
 `list_devices` - List information about all USB devices connected
 
 `storage` - Read raw image from a USB flash drive
+
+`usbfatfs` - Read files from USB formatted with FAT
