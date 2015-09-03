@@ -19,6 +19,3 @@
 #include "camera.h"
 #include "pad.h"
 #include "graphics.h"
-
-#define TEXT (void *)TEXT_ADDRESS
-#define DATA (void *)DATA_ADDRESS
