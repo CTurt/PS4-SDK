@@ -7,8 +7,8 @@ OBJCOPY := objcopy
 ODIR    := build
 SDIR    := source
 IDIRS   := -I$(LIBPS4)/include -I. -Iinclude
-CFLAGS	:= $(IDIRS) -O2 -std=c11 -ffreestanding -fno-builtin -nostdlib -Wall -target x86_64-scei-ps4-elf -masm=intel -march=btver2 -mtune=btver2 -m64 -mcmodel=large
-SFLAGS	:= -nostartfiles -nostdlib -target x86_64-scei-ps4-elf -march=btver2 -mtune=btver2
+CFLAGS	:= $(IDIRS) -O2 -std=c11 -ffreestanding -fno-builtin -Wall -target x86_64-scei-ps4-elf -masm=intel -m64 -mcmodel=large
+SFLAGS	:= -target x86_64-scei-ps4-elf
 CFILES  := $(wildcard $(SDIR)/*.c)
 SFILES  := $(wildcard $(SDIR)/*.s)
 OBJS	:= $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, $(ODIR)/%.o, $(SFILES))

@@ -9,8 +9,8 @@ ODIR	:=	build
 SDIR	:=	source
 IDIRS	:=	-I$(LIBPS4)/include -I$(LIBUSBFATFS)/include -I. -Iinclude
 LDIRS	:=	-L$(LIBPS4) -L$(LIBUSBFATFS) -L. -Llib
-CFLAGS	:=	$(IDIRS) -O2 -fPIC -ffreestanding -fno-builtin -nostdlib -Wall -masm=intel -target x86_64-scei-ps4-elf -march=btver2 -mtune=btver2 -m64 -mcmodel=large
-SFLAGS	:=	-nostartfiles -nostdlib -target x86_64-scei-ps4-elf -march=btver2 -mtune=btver2
+CFLAGS	:=	$(IDIRS) -O2 -fPIC -ffreestanding -fno-builtin -Wall -masm=intel -target x86_64-scei-ps4-elf -m64 -mcmodel=large
+SFLAGS	:=	-target x86_64-scei-ps4-elf
 LFLAGS	:=	$(LDIRS) -shared -fPIE
 CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)
@@ -38,4 +38,4 @@ $(ODIR):
 .PHONY: clean
 
 clean:
-	rm -f $(TARGET) $(ODIR)/*.o
+	rm -rf $(ODIR) $(TARGET) $(ODIR)/*.o
