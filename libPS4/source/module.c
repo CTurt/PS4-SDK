@@ -14,6 +14,7 @@ int getLoadedModules(int *destination, int max, int *count) {
 }
 
 int getModuleInfo(int loadedModuleID, struct moduleInfo *destination) {
+	destination->size = 0x160;
 	return syscall(593, loadedModuleID, destination);
 }
 
