@@ -27,5 +27,4 @@ void initCamera(void) {
 	RESOLVE(libCamera, sceCameraGetDeviceConfig);
 	RESOLVE(libCamera, sceCameraGetConfig);
 	RESOLVE(libCamera, sceCameraSetConfig);
-	
 }
