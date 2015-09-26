@@ -10,3 +10,12 @@ syscall:
 	call    r15
 	pop		r15
 	ret
+
+.global rawSyscall
+rawSyscall:
+	push	r15
+	movq    r15, 0x9263FFFF8
+	mov     r15, [r15]
+	call    r15
+	pop		r15
+	ret

@@ -2,10 +2,5 @@
 
 #include "eventflag.h"
 
-int createEventFlag(const char *name) {
-	return syscall(538, name);
-}
-
-int destroyEventFlag(int eventFlag) {
-	return syscall(539, eventFlag);
-}
+SYSCALL(createEventFlag, 538);
+SYSCALL(destroyEventFlag, 539);

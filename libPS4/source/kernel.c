@@ -14,9 +14,7 @@ int (*sceKernelGettimeofday)(SceKernelTimeval *tp);
 uint64_t (*sceKernelGetProcessTime)(void);
 int (*sceKernelGetCurrentCpu)(void);
 
-int kill(int pid, int signum) {
-	return syscall(37, pid, signum);
-}
+SYSCALL(kill, 37);
 
 void initKernel(void) {
 	int libkernel;
