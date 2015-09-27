@@ -4,6 +4,13 @@
 
 #define PAGE_SIZE (1024 * 1024)
 
+#define PROT_CPU_READ 1
+#define PROT_CPU_WRITE 2
+#define PROT_CPU_EXEC 4
+#define PROT_GPU_EXEC 8
+#define PROT_GPU_READ 16
+#define PROT_GPU_WRITE 32
+
 #define MAP_SHARED 1
 #define MAP_PRIVATE 2
 #define MAP_TYPE 0xf

@@ -2,13 +2,6 @@
 
 #include "types.h"
 
-#define PROT_CPU_READ 1
-#define PROT_CPU_WRITE 2
-#define PROT_CPU_EXEC 4
-#define PROT_GPU_EXEC 8
-#define PROT_GPU_READ 16
-#define PROT_GPU_WRITE 32
-
 typedef struct timeval SceKernelTimeval;
 
 extern int (*sceKernelLoadStartModule)(const char *name, size_t argc, const void *argv, unsigned int flags, int, int);
