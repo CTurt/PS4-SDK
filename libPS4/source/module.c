@@ -8,7 +8,11 @@ int (*sceSysmoduleLoadModule)(int id);
 SYSCALL(getFunctionAddressByName, 591);
 SYSCALL(getLoadedModules, 592);
 SYSCALL(getModuleInfo, 593);
-SYSCALL(loadModule, 594);
+
+int loadModule(const char *name, int *idDestination) {
+	return syscall(594, name, 0, idDestination, 0);
+}
+
 SYSCALL(unloadModule, 595);
 
 void initModule(void) {
