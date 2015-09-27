@@ -1,5 +1,7 @@
 #pragma once
 
+#include "types.h"
+
 #define MAP_SHARED 1
 #define MAP_PRIVATE 2
 #define MAP_TYPE 0xf
