@@ -2,6 +2,8 @@
 
 #include "types.h"
 
+#define PAGE_SIZE (1024 * 1024)
+
 #define MAP_SHARED 1
 #define MAP_PRIVATE 2
 #define MAP_TYPE 0xf
