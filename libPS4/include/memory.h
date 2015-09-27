@@ -2,7 +2,7 @@
 
 #include "types.h"
 
-#define PAGE_SIZE (1024 * 1024)
+#define PAGE_SIZE (16 * 1024)
 
 #define PROT_CPU_READ 1
 #define PROT_CPU_WRITE 2
