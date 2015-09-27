@@ -13,7 +13,9 @@ int loadModule(const char *name, int *idDestination) {
 	return syscall(594, name, 0, idDestination, 0);
 }
 
-SYSCALL(unloadModule, 595);
+int unloadModule(int id) {
+	return syscall(595, id, 0, 0);
+}
 
 void initModule(void) {
 	int libModule = sceKernelLoadStartModule("libSceSysmodule.sprx", 0, NULL, 0, 0, 0);
