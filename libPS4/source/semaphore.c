@@ -2,7 +2,10 @@
 
 #include "semaphore.h"
 
-SYSCALL(createSemaphore, 549);
+int createSemaphore(const char *name, int attributes, int startingCount, int maxCount) {
+	return syscall(549, name, attributes, startingCount, maxCount, 0);
+}
+
 SYSCALL(removeSemaphore, 550);
 SYSCALL(openSemaphore, 551);
 SYSCALL(closeSemaphore, 552);
