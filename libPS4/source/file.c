@@ -13,4 +13,7 @@ SYSCALL(rmdir, 137);
 SYSCALL(stat, 188);
 SYSCALL(fstat, 189);
 SYSCALL(getdents, 272);
-SYSCALL(getSandboxDirectory, 602);
+
+int getSandboxDirectory(char *destination, int *length) {
+  return syscall(602, 0, destination, length);
+}
