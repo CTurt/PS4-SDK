@@ -16,6 +16,7 @@
 #define MAP_TYPE 0xf
 #define MAP_FIXED 0x10
 #define MAP_ANONYMOUS 0x1000
+#define MAP_32BIT 0x80000
 
 struct memoryRegionInfo {
 	void *base; // 0x0
