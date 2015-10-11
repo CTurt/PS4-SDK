@@ -9,7 +9,7 @@ SDIR	:=	source
 IDIRS	:=	-I$(LIBPS4)/include -I. -Iinclude
 LDIRS	:=	-L$(LIBPS4) -L. -Llib
 CFLAGS	:=	$(IDIRS) -O2 -fPIC -ffreestanding -fno-builtin -Wall -masm=intel -target x86_64-scei-ps4-elf -m64 -mcmodel=large
-SFLAGS	:=	-target x86_64-scei-ps4-elf
+SFLAGS	:=	-fPIC -m64 -mcmodel=large -target x86_64-scei-ps4-elf
 LFLAGS	:=	$(LDIRS) -shared -fPIE
 CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)

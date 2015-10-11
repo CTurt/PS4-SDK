@@ -7,7 +7,7 @@ SDIR	:=	source
 IDIR	:=	include
 LDIR	:=	lib
 CFLAGS	:=	-I$(IDIR) -O2 -fPIC -std=c11 -ffreestanding -fno-builtin -Wall -target x86_64-scei-ps4-elf -masm=intel -m64 -mcmodel=large
-SFLAGS	:=	-masm=intel -fPIC -target x86_64-scei-ps4-elf
+SFLAGS	:=	-masm=intel -m64 -mcmodel=large -fPIC -target x86_64-scei-ps4-elf
 CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)
 OBJS	:=	$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, $(ODIR)/%.o, $(SFILES))
