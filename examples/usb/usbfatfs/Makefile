@@ -1,30 +1,31 @@
 LIBPS4	:=	$(PS4SDK)/libPS4
 LIBUSBFATFS	:=	$(PS4SDK)/libusbfatfs
 
-CC		:=	clang
-AS		:=	clang
-LD		:=	ld.gold
+TEXT	:=	0x926200000
+DATA	:=	0x926300000
+
+CC		:=	gcc
+AS		:=	gcc
 OBJCOPY	:=	objcopy
 ODIR	:=	build
 SDIR	:=	source
 IDIRS	:=	-I$(LIBPS4)/include -I$(LIBUSBFATFS)/include -I. -Iinclude
 LDIRS	:=	-L$(LIBPS4) -L$(LIBUSBFATFS) -L. -Llib
-CFLAGS	:=	$(IDIRS) -O2 -fPIC -ffreestanding -fno-builtin -Wall -masm=intel -target x86_64-scei-ps4-elf -m64 -mcmodel=large
-SFLAGS	:=	-fPIC -m64 -mcmodel=large -target x86_64-scei-ps4-elf
-LFLAGS	:=	$(LDIRS) -shared -fPIE
+CFLAGS	:=	$(IDIRS) -O2 -std=c11 -fno-builtin -nostartfiles -nostdlib -Wall -masm=intel -march=btver2 -mtune=btver2 -m64 -mabi=sysv -mcmodel=large -DTEXT_ADDRESS=$(TEXT) -DDATA_ADDRESS=$(DATA)
+SFLAGS	:=	-nostartfiles -nostdlib -march=btver2 -mtune=btver2
+LFLAGS	:=	$(LDIRS) -Ttext=$(TEXT) -Tdata=$(DATA)
 CFILES	:=	$(wildcard $(SDIR)/*.c)
 SFILES	:=	$(wildcard $(SDIR)/*.s)
 OBJS	:=	$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, $(ODIR)/%.o, $(SFILES))
 
 LIBS	:=	-lPS4 -lusbfatfs
 
-TARGET = $(shell basename $(CURDIR))
+TARGET = $(shell basename $(CURDIR)).bin
 
-#$(TARGET).bin: $(TARGET).elf
-#	$(OBJCOPY) -O binary $^ $@
-
-$(TARGET).elf: $(ODIR) $(OBJS)
-	$(LD) $(ODIR)/*.o -o $@ $(LFLAGS) $(LIBS)
+$(TARGET): $(ODIR) $(OBJS)
+	$(CC) $(LIBPS4)/crt0.s $(ODIR)/*.o -o temp.t $(CFLAGS) $(LFLAGS) $(LIBS)
+	$(OBJCOPY) -O binary temp.t $(TARGET)
+	rm -f temp.t
 
 $(ODIR)/%.o: $(SDIR)/%.c
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -38,4 +39,4 @@ $(ODIR):
 .PHONY: clean
 
 clean:
-	rm -rf $(ODIR) $(TARGET) $(ODIR)/*.o
+	rm -f $(TARGET) $(ODIR)/*.o

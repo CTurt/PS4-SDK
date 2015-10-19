@@ -1,19 +1,17 @@
+TARGET  := $(shell basename $(CURDIR)).a
 LIBPS4  := $(PS4SDK)/libPS4
 
-CC      := clang
-AS      := clang
+CC      := gcc
+AS      := gcc
 AR      := ar
 OBJCOPY := objcopy
 ODIR    := build
 SDIR    := source
 IDIRS   := -I$(LIBPS4)/include -I. -Iinclude
-CFLAGS	:= $(IDIRS) -O2 -std=c11 -ffreestanding -fno-builtin -Wall -target x86_64-scei-ps4-elf -masm=intel -m64 -mcmodel=large
-SFLAGS	:= -target x86_64-scei-ps4-elf
+CFLAGS  := $(IDIRS) -std=c11 -O2 -fno-builtin -nostartfiles -nostdlib -Wall -masm=intel -march=btver2 -mtune=btver2 -m64 -mabi=sysv -mcmodel=large
 CFILES  := $(wildcard $(SDIR)/*.c)
 SFILES  := $(wildcard $(SDIR)/*.s)
-OBJS	:= $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, $(ODIR)/%.o, $(SFILES))
-
-TARGET = $(shell basename $(CURDIR)).a
+OBJS	:= $(patsubst $(SDIR)/%.c, build/%.o, $(CFILES)) $(patsubst $(SDIR)/%.s, build/%.o, $(SFILES))
 
 $(TARGET): $(ODIR) $(OBJS)
 	$(AR) rcs $@ $(OBJS)
@@ -30,4 +28,4 @@ $(ODIR):
 .PHONY: clean
 
 clean:
-	rm -rf $(ODIR) $(TARGET) $(ODIR)/*.o
+	rm -rf build $(TARGET) $(ODIR)/*.o
