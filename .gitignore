@@ -7,8 +7,10 @@ examples/*/*.bin
 examples/*/*.elf
 examples/*/*.bat
 examples/*/*.exe
+examples/*/*.sh
 examples/*/*/build
 examples/*/*/*.bin
 examples/*/*/*.elf
 examples/*/*/*.bat
 examples/*/*/*.exe
+examples/*/*/*.sh
