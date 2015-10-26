@@ -19,7 +19,7 @@
 #define MSG_WAITALL 0x40
 
 struct in_addr {
-	unsigned long s_addr;
+	unsigned int s_addr;
 };
 
 struct sockaddr_in {
