@@ -2,15 +2,17 @@
 
 #include <stdint.h>
 
+#define offsetof(a, b) ((size_t)(((void *)&((a *)NULL)->b) - NULL))
+
 #ifndef NULL
 #define NULL 0
 #endif
 
 #define BIT(n) (1 << (n))
 
-typedef unsigned int size_t;
-typedef signed int ssize_t;
-typedef unsigned short wchar_t;
+typedef uint64_t size_t;
+typedef int64_t ssize_t;
+typedef uint16_t wchar_t;
 
 typedef uint8_t uint8;
 typedef uint16_t uint16;
