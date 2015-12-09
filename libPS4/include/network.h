@@ -18,6 +18,9 @@
 #define MSG_DONTWAIT 0x80
 #define MSG_WAITALL 0x40
 
+#define IPPROTO_TCP 6
+#define TCP_NODELAY 1
+
 struct in_addr {
 	unsigned int s_addr;
 };
