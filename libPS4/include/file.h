@@ -118,6 +118,7 @@ int mkdir(const char *pathname, mode_t mode);
 int rmdir(const char *path);
 int stat(const char *path, struct stat *sb);
 int fstat(int fd, struct stat *sb);
+int fchmod(int fd, int mode);
 int getdents(int fd, char *buf, size_t count);
 
 int getSandboxDirectory(char *destination, int *length);
