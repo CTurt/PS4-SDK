@@ -7,7 +7,7 @@ SYSCALL(write, 4);
 SYSCALL(open, 5);
 SYSCALL(close, 5);
 SYSCALL(unlink, 10);
-SYSCALL(fchmod, 24);
+SYSCALL(fchmod, 124);
 SYSCALL(rename, 128);
 SYSCALL(mkdir, 136);
 SYSCALL(rmdir, 137);
