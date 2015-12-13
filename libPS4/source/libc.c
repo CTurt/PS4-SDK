@@ -9,6 +9,7 @@ void *(*calloc)(size_t num, size_t size);
 void *(*realloc)(void* ptr, size_t size);
 void *(*memset)(void *destination, int value, size_t num);
 void *(*memcpy)(void *destination, const void *source, size_t num);
+int (*memcmp)(const void *s1, const void *s2, size_t n);
 char *(*strcpy)(char *destination, const char *source);
 char *(*strncpy)(char *destination, const char *source, size_t num);
 char *(*strcat)(char *dest, const char *src);
