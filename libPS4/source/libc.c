@@ -55,6 +55,7 @@ void initLibc(void) {
 	RESOLVE(libc, realloc);
 	RESOLVE(libc, memset);
 	RESOLVE(libc, memcpy);
+	RESOLVE(libc, memcmp);
 	RESOLVE(libc, strcpy);
 	RESOLVE(libc, strncpy);
 	RESOLVE(libc, strcat);
