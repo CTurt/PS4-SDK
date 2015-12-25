@@ -15,9 +15,9 @@ Build the libraries by running `make` on the `libPS4` and `libusbfatfs` director
 Finally, you can build examples by running `make` on them.
 
 ## Design
-At the moment, it is primarily focused on the kernel. For example, [all semaphore system calls have been implemented](https://github.com/CTurt/PS4-SDK/blob/master/source/semaphore.c), from 549 to 556.
+At the moment, it is primarily focused on the kernel. For example, [all semaphore system calls have been implemented](https://github.com/CTurt/PS4-SDK/blob/master/libPS4/source/semaphore.c), from 549 to 556.
 
-However, using function pointers and the `RESOLVE` macro, we can call functions from other modules. For example, [the socket functions](https://github.com/CTurt/PS4-SDK/blob/master/source/network.c) from `libSceNet.sprx`.
+However, using function pointers and the `RESOLVE` macro, we can call functions from other modules. For example, [the socket functions](https://github.com/CTurt/PS4-SDK/blob/master/libPS4/source/network.c) from `libSceNet.sprx`.
 
 ## Support
 Whilst the SDK isn't capable of most basic functionality yet, such as displaying graphics, or receiving controller input, there are workarounds: rendering to an HTML5 canvas, and using third party USB controllers, or a DS/PSP wirelessly for example.
