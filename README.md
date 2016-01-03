@@ -15,7 +15,7 @@ Build the libraries by running `make` on the `libPS4` and `libusbfatfs` director
 Finally, you can build examples by running `make` on them.
 
 ## Design
-At the moment, it is primarily focused on the kernel. For example, [all semaphore system calls have been implemented](https://github.com/CTurt/PS4-SDK/blob/master/source/semaphore.c), from 549 to 556.
+At the moment, it is primarily focused on system calls.
 
 However, using function pointers and the `RESOLVE` macro, we can call functions from other modules. For example, [the socket functions](https://github.com/CTurt/PS4-SDK/blob/master/source/network.c) from `libSceNet.sprx`.
 
@@ -38,6 +38,8 @@ The SDK is currently in a state where projects like an FTP server, [a mini Pong 
 `camera` - Initialise the PlayStation Camera and capture 10 frames
 
 `pad` - Read controller input (not finished)
+
+`jit` - Setting up JIT shared memory
 
 ### Filesystem
 `directories` - List the contents of a directory
