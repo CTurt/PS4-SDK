@@ -19,3 +19,4 @@
 #include "camera.h"
 #include "pad.h"
 #include "graphics.h"
+#include "jit.h"
