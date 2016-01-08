@@ -26,6 +26,7 @@ int _main(void)
 	initKernel();
 	initLibc();
 	initNetwork();
+	initUsb();
 
 	struct sockaddr_in server;
 
