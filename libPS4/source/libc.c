@@ -22,6 +22,7 @@ int (*snprintf)(char *str, size_t size, const char *format, ...);
 int (*sscanf)(const char *str, const char *format, ...);
 char *(*strchr)(const char *s, int c);
 char *(*strrchr)(const char *s, int c);
+char *(*strstr)(char *str1, char *str2);
 
 void (*srand)(unsigned int seed);
 int (*rand)(void);
@@ -44,7 +45,14 @@ void (*seekdir)(DIR *dirp, long loc);
 void (*rewinddir)(DIR *dirp);
 int (*closedir)(DIR *dirp);
 int (*dirfd)(DIR *dirp);
+char *(*getprogname)();
 
+FILE *(*fopen)(const char *filename, const char *mode);
+size_t (*fread)(void *ptr, size_t size, size_t count, FILE *stream);
+size_t (*fwrite)(const void * ptr, size_t size, size_t count, FILE *stream );
+int (*fseek)(FILE *stream, long int offset, int origin);
+long int(*ftell)(FILE *stream);
+int (*fclose)(FILE *stream);
 
 void initLibc(void) {
 	int libc = sceKernelLoadStartModule("libSceLibcInternal.sprx", 0, NULL, 0, 0, 0);
@@ -68,6 +76,7 @@ void initLibc(void) {
 	RESOLVE(libc, sscanf);
 	RESOLVE(libc, strchr);
 	RESOLVE(libc, strrchr);
+	RESOLVE(libc, strstr);
 	
 	RESOLVE(libc, srand);
 	RESOLVE(libc, rand);
@@ -90,4 +99,13 @@ void initLibc(void) {
 	RESOLVE(libc, rewinddir);
 	RESOLVE(libc, closedir);
 	RESOLVE(libc, dirfd);
+
+	RESOLVE(libc, getprogname);
+
+	RESOLVE(libc, fopen);
+	RESOLVE(libc, fread);
+	RESOLVE(libc, fwrite);
+	RESOLVE(libc, fseek);
+	RESOLVE(libc, ftell);
+	RESOLVE(libc, fclose);
 }

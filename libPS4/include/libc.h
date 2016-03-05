@@ -4,6 +4,11 @@
 #include "file.h"
 
 typedef struct DIR DIR;
+typedef int FILE;
+
+#define	SEEK_SET	0
+#define	SEEK_CUR	1
+#define	SEEK_END	2
 
 extern void *(*malloc)(size_t size);
 extern void (*free)(void *ptr);
@@ -24,6 +29,7 @@ extern int (*snprintf)(char *str, size_t size, const char *format, ...);
 extern int (*sscanf)(const char *str, const char *format, ...);
 extern char *(*strchr)(const char *s, int c);
 extern char *(*strrchr)(const char *s, int c);
+extern char *(*strstr)(char *str1, char *str2);
 
 extern void (*srand)(unsigned int seed);
 extern int (*rand)(void);
@@ -46,5 +52,13 @@ extern void (*seekdir)(DIR *dirp, long loc);
 extern void (*rewinddir)(DIR *dirp);
 extern int (*closedir)(DIR *dirp);
 extern int (*dirfd)(DIR *dirp);
+extern char *(*getprogname)();
+
+extern FILE *(*fopen)(const char *filename, const char *mode);
+extern size_t (*fread)(void *ptr, size_t size, size_t count, FILE *stream);
+extern size_t (*fwrite)(const void * ptr, size_t size, size_t count, FILE *stream );
+extern int (*fseek)(FILE *stream, long int offset, int origin);
+extern long int(*ftell)(FILE *stream);
+extern int (*fclose)(FILE *stream);
 
 void initLibc(void);
