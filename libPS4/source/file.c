@@ -5,7 +5,7 @@
 SYSCALL(read, 3);
 SYSCALL(write, 4);
 SYSCALL(open, 5);
-SYSCALL(close, 5);
+SYSCALL(close, 6);
 SYSCALL(unlink, 10);
 SYSCALL(fchown, 123);
 SYSCALL(fchmod, 124);
