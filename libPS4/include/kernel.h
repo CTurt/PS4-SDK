@@ -3,7 +3,7 @@
 #include "types.h"
 
 typedef struct timeval SceKernelTimeval;
-typedef int SceKernelEqueue;
+typedef uint64_t SceKernelEqueue;
 
 extern int (*sceKernelLoadStartModule)(const char *name, size_t argc, const void *argv, unsigned int flags, int, int);
 
