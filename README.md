@@ -1,5 +1,5 @@
 # PS4 SDK
-An open source PlayStation 4 SDK.
+An open source PlayStation 4 SDK for writing userland applications which can be run with the [PS4-playground](https://github.com/CTurt/PS4-playground).
 
 ## Building and installing
 You will need [LLVM](http://llvm.org/releases/) version 3.7 or later for compiling, and `binutils` for linking (from [MinGW](http://www.mingw.org/) if you are on Windows).
