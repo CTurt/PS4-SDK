@@ -4,6 +4,7 @@
 
 SYSCALL(mmap, 477);
 SYSCALL(munmap, 73);
+SYSCALL(mprotect, 74);
 SYSCALL(msync, 65);
 
 SYSCALL(getMemoryInfo, 547);
