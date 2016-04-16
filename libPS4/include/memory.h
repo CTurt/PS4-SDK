@@ -46,6 +46,8 @@ void *mmap(void *addr, size_t len, int prot, int flags, int fd, off_t offset);
 int munmap(void *addr, size_t len);
 int mprotect(void *addr, size_t len, int prot);
 int msync(void *addr, size_t len, int flags);
+int mlock(void *addr, size_t len);
+int munlock(void *addr, size_t len);
 
 int getMemoryInfo(void *address, struct memoryRegionInfo *destination);
 int getOtherMemoryInfo(void *address, int nextMatchIfUnmapped, struct otherMemoryRegionInfo *destination);
