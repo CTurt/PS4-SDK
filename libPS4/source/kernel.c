@@ -38,6 +38,7 @@ int (*setregid)(int rgid, int egid);
 
 
 SYSCALL(kill, 37);
+SYSCALL(ioctl, 54);
 
 void initKernel(void) {
 	int libkernel;
