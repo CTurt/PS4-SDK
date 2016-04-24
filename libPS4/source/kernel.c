@@ -3,6 +3,8 @@
 
 #include "kernel.h"
 
+int libKernelHandle;
+
 int (*sceKernelLoadStartModule)(const char *name, size_t argc, const void *argv, unsigned int flags, int, int);
 
 int (*sceKernelAllocateDirectMemory)(off_t searchStart, off_t searchEnd, size_t length, size_t alignment, int type, off_t *physicalAddressDestination);
@@ -41,39 +43,38 @@ SYSCALL(kill, 37);
 SYSCALL(ioctl, 54);
 
 void initKernel(void) {
-	int libkernel;
-	loadModule("libkernel.sprx", &libkernel);
+	loadModule("libkernel.sprx", &libKernelHandle);
 	
-	RESOLVE(libkernel, sceKernelLoadStartModule);
+	RESOLVE(libKernelHandle, sceKernelLoadStartModule);
 	
-	RESOLVE(libkernel, sceKernelAllocateDirectMemory);
-	RESOLVE(libkernel, sceKernelMapDirectMemory);
+	RESOLVE(libKernelHandle, sceKernelAllocateDirectMemory);
+	RESOLVE(libKernelHandle, sceKernelMapDirectMemory);
 	
-	RESOLVE(libkernel, sceKernelSleep);
-	RESOLVE(libkernel, sceKernelUsleep);
-	RESOLVE(libkernel, sceKernelGettimeofday);
-	RESOLVE(libkernel, sceKernelGetProcessTime);
-	RESOLVE(libkernel, sceKernelGetCurrentCpu);
+	RESOLVE(libKernelHandle, sceKernelSleep);
+	RESOLVE(libKernelHandle, sceKernelUsleep);
+	RESOLVE(libKernelHandle, sceKernelGettimeofday);
+	RESOLVE(libKernelHandle, sceKernelGetProcessTime);
+	RESOLVE(libKernelHandle, sceKernelGetCurrentCpu);
 
-	RESOLVE(libkernel, sysctl);
-	RESOLVE(libkernel, sysctlbyname);
-	RESOLVE(libkernel, sysarch);
-	RESOLVE(libkernel, execve);
+	RESOLVE(libKernelHandle, sysctl);
+	RESOLVE(libKernelHandle, sysctlbyname);
+	RESOLVE(libKernelHandle, sysarch);
+	RESOLVE(libKernelHandle, execve);
 
-	RESOLVE(libkernel, pthread_self);
-	RESOLVE(libkernel, pthread_setaffinity_np);
+	RESOLVE(libKernelHandle, pthread_self);
+	RESOLVE(libKernelHandle, pthread_setaffinity_np);
 
-	RESOLVE(libkernel, sceKernelCreateEqueue);
-	RESOLVE(libkernel, sceKernelDeleteEqueue);
-	RESOLVE(libkernel, sceKernelAddUserEvent);
-	RESOLVE(libkernel, sceKernelAddReadEvent);
+	RESOLVE(libKernelHandle, sceKernelCreateEqueue);
+	RESOLVE(libKernelHandle, sceKernelDeleteEqueue);
+	RESOLVE(libKernelHandle, sceKernelAddUserEvent);
+	RESOLVE(libKernelHandle, sceKernelAddReadEvent);
 
-	RESOLVE(libkernel, getuid);
-	RESOLVE(libkernel, getgid);
-	RESOLVE(libkernel, getpid);
+	RESOLVE(libKernelHandle, getuid);
+	RESOLVE(libKernelHandle, getgid);
+	RESOLVE(libKernelHandle, getpid);
 
-	RESOLVE(libkernel, setuid);
-	RESOLVE(libkernel, setgid);
-	RESOLVE(libkernel, setreuid);
-	RESOLVE(libkernel, setregid);
+	RESOLVE(libKernelHandle, setuid);
+	RESOLVE(libKernelHandle, setgid);
+	RESOLVE(libKernelHandle, setreuid);
+	RESOLVE(libKernelHandle, setregid);
 }

@@ -19,21 +19,18 @@ int (*scePthreadMutexTimedlock)(ScePthreadMutex *mutex, SceKernelUseconds usec);
 int (*scePthreadMutexUnlock)(ScePthreadMutex *mutex);
 
 void initPthread(void) {
-	int libkernel;
-	loadModule("libkernel.sprx", &libkernel);
+	RESOLVE(libKernelHandle, scePthreadCreate);
+	RESOLVE(libKernelHandle, scePthreadExit);
+	RESOLVE(libKernelHandle, scePthreadDetach);
+	RESOLVE(libKernelHandle, scePthreadJoin);
+	RESOLVE(libKernelHandle, scePthreadYield);
+	RESOLVE(libKernelHandle, scePthreadSelf);
+	RESOLVE(libKernelHandle, scePthreadCancel);
 
-	RESOLVE(libkernel, scePthreadCreate);
-	RESOLVE(libkernel, scePthreadExit);
-	RESOLVE(libkernel, scePthreadDetach);
-	RESOLVE(libkernel, scePthreadJoin);
-	RESOLVE(libkernel, scePthreadYield);
-	RESOLVE(libkernel, scePthreadSelf);
-	RESOLVE(libkernel, scePthreadCancel);
-
-	RESOLVE(libkernel, scePthreadMutexInit);
-	RESOLVE(libkernel, scePthreadMutexDestroy);
-	RESOLVE(libkernel, scePthreadMutexLock);
-	RESOLVE(libkernel, scePthreadMutexTrylock);
-	RESOLVE(libkernel, scePthreadMutexTimedlock);
-	RESOLVE(libkernel, scePthreadMutexUnlock);
+	RESOLVE(libKernelHandle, scePthreadMutexInit);
+	RESOLVE(libKernelHandle, scePthreadMutexDestroy);
+	RESOLVE(libKernelHandle, scePthreadMutexLock);
+	RESOLVE(libKernelHandle, scePthreadMutexTrylock);
+	RESOLVE(libKernelHandle, scePthreadMutexTimedlock);
+	RESOLVE(libKernelHandle, scePthreadMutexUnlock);
 }

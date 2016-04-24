@@ -9,12 +9,9 @@ int (*sceKernelJitCreateAliasOfSharedMemory)(int handle, int protection, int *de
 int (*sceKernelJitMapSharedMemory)(int handle, int protection, void **destination);
 
 void initJIT(void) {
-	int libkernel;
-	loadModule("libkernel.sprx", &libkernel);
-	
-	RESOLVE(libkernel, sceKernelJitCreateSharedMemory);
-	RESOLVE(libkernel, sceKernelJitCreateAliasOfSharedMemory);
-	RESOLVE(libkernel, sceKernelJitMapSharedMemory);
+	RESOLVE(libKernelHandle, sceKernelJitCreateSharedMemory);
+	RESOLVE(libKernelHandle, sceKernelJitCreateAliasOfSharedMemory);
+	RESOLVE(libKernelHandle, sceKernelJitMapSharedMemory);
 }
 
 void allocateJIT(size_t size, void **executableAddress, void **writableAddress) {

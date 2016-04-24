@@ -5,6 +5,8 @@
 typedef struct timeval SceKernelTimeval;
 typedef uint64_t SceKernelEqueue;
 
+extern int libKernelHandle;
+
 extern int (*sceKernelLoadStartModule)(const char *name, size_t argc, const void *argv, unsigned int flags, int, int);
 
 extern int (*sceKernelAllocateDirectMemory)(off_t searchStart, off_t searchEnd, size_t length, size_t alignment, int type, off_t *physicalAddressDestination);
