@@ -20,7 +20,7 @@ extern int (*sysctl)(int *name, unsigned int namelen, char *oldval, size_t *oldl
 extern int (*sysctlbyname)(char *name, char *oldval, size_t *oldlen, char *newval, size_t *newlen);
 extern int (*sysarch)(int type, void *arg);
 extern int (*execve)(char *path, char *argv[], char *envp[]);
-extern int ioctl(int fd, unsigned long com, void *data);
+int ioctl(int fd, unsigned long com, void *data);
 
 extern void *(*pthread_self)();
 extern int (*pthread_setaffinity_np)(void *one, long unsigned int two, void *three);
