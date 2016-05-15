@@ -18,8 +18,8 @@ extern int (*sceKernelGettimeofday)(SceKernelTimeval *tp);
 extern uint64_t (*sceKernelGetProcessTime)(void);
 extern int (*sceKernelGetCurrentCpu)(void);
 
-extern int (*sysctl)(int *name, unsigned int namelen, char *oldval, size_t *oldlen, char *newval, size_t *newlen);
-extern int (*sysctlbyname)(char *name, char *oldval, size_t *oldlen, char *newval, size_t *newlen);
+extern int (*sysctl)(int *name, unsigned int namelen, char *oldval, size_t *oldlen, char *newval, size_t newlen);
+extern int (*sysctlbyname)(char *name, char *oldval, size_t *oldlen, char *newval, size_t newlen);
 extern int (*sysarch)(int type, void *arg);
 extern int (*execve)(char *path, char *argv[], char *envp[]);
 int ioctl(int fd, unsigned long com, void *data);
