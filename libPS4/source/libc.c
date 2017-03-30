@@ -53,6 +53,7 @@ size_t (*fwrite)(const void * ptr, size_t size, size_t count, FILE *stream );
 int (*fseek)(FILE *stream, long int offset, int origin);
 long int(*ftell)(FILE *stream);
 int (*fclose)(FILE *stream);
+int (*fprintf)(FILE *stream, const char *format, ...);
 
 void initLibc(void) {
 	int libc = sceKernelLoadStartModule("libSceLibcInternal.sprx", 0, NULL, 0, 0, 0);
@@ -108,4 +109,5 @@ void initLibc(void) {
 	RESOLVE(libc, fseek);
 	RESOLVE(libc, ftell);
 	RESOLVE(libc, fclose);
+	RESOLVE(libc, fprintf);
 }
