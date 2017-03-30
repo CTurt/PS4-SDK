@@ -60,5 +60,6 @@ extern size_t (*fwrite)(const void * ptr, size_t size, size_t count, FILE *strea
 extern int (*fseek)(FILE *stream, long int offset, int origin);
 extern long int(*ftell)(FILE *stream);
 extern int (*fclose)(FILE *stream);
+extern int (*fprintf)(FILE *stream, const char *format, ...);
 
 void initLibc(void);
